@@ -1,0 +1,18 @@
+---
+interface PortfolioItemProps {
+    imageUrl: string;
+    title: string;
+    description: string;
+}
+const { title, description, imageUrl } = Astro.props;
+---
+
+<li class="bg-theme-surface-1 text-theme-on-surface-1 p-6 rounded-lg shadow-md transition hover:shadow-lg duration-[var(--theme-transition)]">
+    <img src={imageUrl} alt={title} class="w-full h-48 object-cover rounded-t-lg mb-4" />
+    <h3 class="text-theme-on-bg text-xl font-semibold mb-4">{title}</h3>
+    <p class="mb-4">{description}</p>
+</li>
+
+<style>
+    /* Aquí puedes agregar estilos específicos para este componente si es necesario */
+</style>

@@ -1,0 +1,13 @@
+---
+import * as c from "../../constClasses.js";
+
+interface Props{
+    text: string;
+    link: string;
+}
+
+const { text, link } = Astro.props;
+---
+<a href={link} class=`${c.TEXT_COLOR} ${c.BG_GRADIENT} ${c.GRADIENT_START} ${c.GRADIENT_MID} ${c.GRADIENT_END} ${c.HOVER_GRADIENT} ${c.FOCUS_RING_SIZE} ${c.FOCUS_OUTLINE} ${c.FOCUS_RING_COLOR} ${c.DARK_FOCUS_RING_COLOR} ${c.FONT_SIZE_AND_WEIGHT} ${c.ROUNDED_CORNERS} ${c.TEXT_SIZE} ${c.PADDING_X} ${c.PADDING_Y} ${c.TEXT_ALIGNMENT} ${c.MARGIN_RIGHT} ${c.MARGIN_BOTTOM}`>
+    {text}
+</a>
