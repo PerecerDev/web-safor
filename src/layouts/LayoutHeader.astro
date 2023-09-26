@@ -1,29 +1,31 @@
 ---
 import ButtonCTA from "../components/Generic/ButtonCTA.astro";
+import FullText from "../components/Generic/FullText.astro";
+import StickyHeaderBar from "../components/Header/StickyHeaderBar.astro";
+
+import {
+
+
+
+} from "../../styleConstants.js";
+
+const styleConstants = [
+
+
+
+].join(' ');
 ---
 
 <header class="bg-theme-surface-2 text-theme-on-surface-2 py-6">
     <div class="container mx-auto px-[var(--container-padding)] max-w-[var(--container-max-width)] flex flex-col items-center justify-center space-y-4">
-        <!-- Logo -->
-        <a href="/">
-            <img src="public/img/logo.png" alt="WebSafor Logo" class="h-28 w-auto"> <!-- Aumentamos aún más el tamaño del logo -->
-        </a>
+        <!-- TopHeaderBar -->
+        <StickyHeaderBar />
 
         <!-- Slogan -->
-        <p class="text-theme-on-surface-1 text-lg font-semibold">Consigue más clientes con tu propia web</p>
-
-        <!-- Menú de navegación -->
-        <nav>
-            <ul class="flex space-x-4">
-                <li><a href="/" class="px-4 py-2 rounded-full hover:bg-theme-surface-1 hover:text-theme-on-surface-2 transition duration-[var(--theme-transition)]">Inicio</a></li>
-                <li><a href="/services" class="px-4 py-2 rounded-full hover:bg-theme-surface-1 hover:text-theme-on-surface-2 transition duration-[var(--theme-transition)]">Servicios</a></li>
-                <li><a href="/portfolio" class="px-4 py-2 rounded-full hover:bg-theme-surface-1 hover:text-theme-on-surface-2 transition duration-[var(--theme-transition)]">Portafolio</a></li>
-                <li><a href="/contact" class="px-4 py-2 rounded-full hover:bg-theme-surface-1 hover:text-theme-on-surface-2 transition duration-[var(--theme-transition)]">Contacto</a></li>
-            </ul>
-        </nav>      
+        <FullText side="right" text='Consigue más clientes con tu propia web'/>
 
         <!-- Botón CTA presupuesto -->
-        <ButtonCTA text="Solicita presupuesto" link="#SolicitaPresupuesto" />
+        <ButtonCTA text="Consigue un presupuesto gratuito" link="#SolicitaPresupuesto" />
 
     </div>
 </header>

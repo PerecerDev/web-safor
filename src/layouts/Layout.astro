@@ -1,7 +1,14 @@
 ---
-/* import LayoutHeader from '/LayoutHeader.astro';
-import LayoutFooter from '/LayoutFooter.astro';
- */
+
+import {
+
+} from "../styleConstants.js";
+
+const styleConstants = [
+
+
+].join(' ');
+
 interface Props {
 	title: string;
 }
@@ -19,14 +26,10 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title ? `${title} - WebSafor` : 'WebSafor'}</title>
 
-		<link rel="stylesheet" href="src/styles.css">
-
 	</head>
-	<body class="bg-theme-bg text-theme-on-bg font-sans">
-		<!-- <LayoutHeader /> -->
-		<main class="container mx-auto px-[var(--container-padding)] max-w-[var(--container-max-width)]">
+	<body class=` p-4`>
+		<main class=`container mx-auto mt-20`>
 			<slot></slot> <!-- Este slot permitirá insertar el contenido de las páginas que utilicen este layout -->
 		</main>
-		<!-- <LayoutFooter /> -->
 	</body>
 </html>
