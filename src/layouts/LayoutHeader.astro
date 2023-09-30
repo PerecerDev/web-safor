@@ -1,13 +1,16 @@
 ---
-import ButtonCTA from "../components/Generic/ButtonCTA.astro";
-import FullText from "../components/Generic/FullText.astro";
 import StickyHeaderBar from "../components/Header/StickyHeaderBar.astro";
+import BigText from "../components/Generic/BigText.astro";
+import BigTextImage from "../components/Generic/BigTextImage.astro";
+
+import FullTextButton from "../components/Generic/FullTextButton.astro";
+import ButtonCTA from "../components/Generic/ButtonCTA.astro";
 
 import {
 
 
 
-} from "../../styleConstants.js";
+} from "../styleConstants.js";
 
 const styleConstants = [
 
@@ -16,16 +19,19 @@ const styleConstants = [
 ].join(' ');
 ---
 
-<header class="bg-theme-surface-2 text-theme-on-surface-2 py-6">
-    <div class="container mx-auto px-[var(--container-padding)] max-w-[var(--container-max-width)] flex flex-col items-center justify-center space-y-4">
+<header class="bg-theme-surface-2 text-theme-on-surface-2">
+    <div class="container mx-auto flex flex-col items-center justify-center space-y-4">
         <!-- TopHeaderBar -->
         <StickyHeaderBar />
 
-        <!-- Slogan -->
-        <FullText side="right" text='Consigue más clientes con tu propia web'/>
+        <!-- Full Text Block -->
+        <BigText title='Consigue más clientes con tu propia web' side="left" color="black" bg="bg-white"/>
 
-        <!-- Botón CTA presupuesto -->
-        <ButtonCTA text="Consigue un presupuesto gratuito" link="#SolicitaPresupuesto" />
+        <!-- Full Text Block -->
+        <BigTextImage title='¿Cuánto cuesta una web?' text="Desde 890 €" side="right" bg="bg-orange-200" color="blue-950" image="../../public/img/pensando2.png"/>
+
+        <!-- Full Text Block -->
+        <FullTextButton title='¿En cuanto tiempo?' subtitle="" text="Entre 2 y 4 semanas" button="Obten un Presupuesto Gratuito" side="left" color="white" bg="bg-gradient-to-br from-teal-950 via-teal-900 to-teal-950" />
 
     </div>
 </header>

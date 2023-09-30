@@ -1,0 +1,23 @@
+---
+import {
+
+} from "../../styleConstants.js";
+
+const styleConstants = [
+
+].join(' ');
+
+const {title, text, image, side, color, bg} = Astro.props;
+
+---
+<section class=" w-full relative ">
+    <aside class=`w-full relative z-20 p-12 text-${side} text-${color} ${bg}`>
+        
+        <h2 class="w-full font-serif text-7xl font-bold mb-10 px-12 text-white">{title}</h2>
+        <h3 class=`w-full font-sans text-4xl font-thin text-${side} text-stone-500 px-16 pl-52`>{text}</h3>
+
+    </aside>
+    <aside class="w-full overflow-hidden absolute z-20 -bottom-48 ">
+        <img src=`${image}` alt=`${title}` class=" w-80 h-auto block"/>
+    </aside>
+</section>

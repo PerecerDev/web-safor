@@ -1,25 +1,20 @@
 ---
-
 import {
-
-    SIZE_TITLES,
-	FONT_TITLES,
-    TEXT_BOLD
 
 } from "../../styleConstants.js";
 
 const styleConstants = [
 
-    SIZE_TITLES,
-	FONT_TITLES,
-    TEXT_BOLD
-
 ].join(' ');
 
-const {text, side} = Astro.props
+const {title, subtitle, text, side, color, bg} = Astro.props;
 
 ---
 
-<section class="w-full flex">
-    <span class=`${FONT_TITLES} ${TEXT_BOLD} ${SIZE_TITLES} px-10 mb-20 text-${side}`>{text}</span>
+<section class=`h-screen w-full p-12 text-${side} text-${color} ${bg}`>
+    
+    <h1 class="w-full font-serif text-7xl font-bold mb-4">{title}</h1>
+    <h3 class="w-full font-sans text-xl font-thin mb-12">{subtitle}</h3>
+    <span class="w-full font-sans text-4xl font-thin">{text}</span>    
+
 </section>

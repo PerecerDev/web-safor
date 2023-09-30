@@ -5,7 +5,7 @@ interface Props{
     link: string;
 }
 
-const { text, link } = Astro.props;
+const { button, link } = Astro.props;
 
 import {
 
@@ -17,8 +17,8 @@ const styleConstants = [
 
 ---
 
-<div>
-    <a href={link} class={"p-6 w-full text-center bg-gradient-to-br from-blue-900 to-blue-950 text-white rounded-md text-3xl font-sans font-thin shadow-lg shadow-blue-600 mb-20"}>
-        {text}
+<div class="flex w-full px-6 pb-20">
+    <a href={link} class={"flex-1 w-full py-8 text-center bg-gradient-to-br from-blue-900 to-blue-950 text-white rounded-md text-3xl font-sans font-thin shadow-xl shadow-blue-800/40 "}>
+        {button}
     </a>
 </div>

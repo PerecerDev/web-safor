@@ -4,7 +4,7 @@ import LayoutHeader from '../layouts/LayoutHeader.astro';
 import LayoutFooter from '../layouts/LayoutFooter.astro';
 
 import ServiceCard from '../components/ServiceCard/ServiceCard.astro';
-import PortfolioItem from '../components/PortFolioItem/PortFolioItem.astro';
+import PortFolioItem from '../components/PortFolioItem/PortFolioItem.astro';
 import Testimonial from '../components/Testimonial/Testimonial.astro';
 
 ---
@@ -13,33 +13,47 @@ import Testimonial from '../components/Testimonial/Testimonial.astro';
 
 <Layout title="Inicio">
   <LayoutHeader />
-  <section class="bg-gray-100 py-12">
-    <div class="container mx-auto text-center">
-      <h1 class="text-4xl font-bold mb-8">Bienvenido a WebSafor</h1>
-      <p class="text-xl mb-6">Ofrecemos servicios de diseño web y gráfico para autónomos y pymes en la comarca de la Safor.</p>
+  <section class="bg-black text-gray-200 px-14 py-12 text-center">
+    <div class="container mx-auto">
+      <h1 class="text-6xl font-bold font-serif mb-20">La importancia de tener una web</h1>
+      <ul class="grid grid-cols-2 gap-x-8 text-green-300">
+        <li class=" list-none rounded-md bg-green-950/50 text-center font-sans ring-1 ring-green-300 py-7 px-4 mb-8"><div class="text-7xl font-bold font-sans mb-5">97<span class="text-xl"> %</span></div><span class="text-white text-lg w-full block font-thin">Buscan negocios locales antes de salir a comprar</span><a href="https://www.google.es" class=" text-xs font-thin">google.es</a></li>
+        <li class=" list-none rounded-md bg-green-950/50 text-center font-sans ring-1 ring-green-300 py-7 px-4 mb-8"><div class="text-7xl font-bold font-sans mb-5">84<span class="text-xl"> %</span></div><span class="text-white text-lg w-full block font-thin">Consiederan mas creible y fiable un negocio con web</span><a href="https://www.verisign.es" class=" text-xs font-thin">verisign.es</a></li>
+        <li class=" list-none rounded-md bg-green-950/50 text-center font-sans ring-1 ring-green-300 py-7 px-4 mb-8"><div class="text-7xl font-bold font-sans mb-5">29<span class="text-xl"> %</span></div><span class="text-white text-lg w-full block font-thin">No harían negocios con empresas sin web</span><a href="https://www.clutch.es" class=" text-xs font-thin">clutch.es</a></li>
+        <li class=" list-none rounded-md bg-green-950/50 text-center font-sans ring-1 ring-green-300 py-7 px-4 mb-8"><div class="text-7xl font-bold font-sans mb-5">3<span class="text-xl"> X</span></div><span class="text-white text-lg w-full block font-thin">Clientes potenciales a partir de una web</span><a href="https://www.hubspot.es" class=" text-xs font-thin">hubspot.es</a></li>
+      </ul>
+      <p class="text-xl mb-6 font-thin">Tu presencia en línea es más crucial que nunca en el mundo digital de hoy.</p>
+      <p class="text-xl mb-6 font-thin">En WebSafor, entendemos la importancia de tener un sitio web que no solo se vea bien, sino que también funcione a la perfección.</p>
+      <p class="text-xl mb-6 font-thin">Especializados en diseño web y gráfico, nos dedicamos a transformar tus ideas en realidades digitales impactantes.</p>
     </div>
   </section>
 
-  <section class="py-12">
+  <section class=" bg-teal-950 text-gray-300 px-14 py-12 text-left">
+    <div class="container mx-auto">
+      <h1 class="text-6xl font-bold font-serif mb-8">¿Por qué con WebSafor?</h1>
+      <p class="text-xl mb-6">En WebSafor, entendemos la importancia de tener un sitio web que no solo se vea bien, sino que también funcione a la perfección.</p>
+      <p class="text-xl mb-6">Especializados en diseño web y gráfico, nos dedicamos a transformar tus ideas en realidades digitales impactantes.</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-orange-200">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8">Nuestros Servicios</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Aquí puedes iterar sobre tus servicios y renderizar un ServiceCard para cada uno -->
-        <ServiceCard title="Servicio 1" description='Este es el primer servicio' price='45 €'/>
-        <ServiceCard title="Servicio 1" description='Este es el primer servicio' price='45 €'/>
-        <ServiceCard title="Servicio 1" description='Este es el primer servicio' price='45 €'/>
+      <h2 class="text-6xl font-bold font-serif mb-14">Estos son algunos de nuestros últimos trabajos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
+        <PortFolioItem imageUrl="public/img/liralashes.png" title="Lira Lashes" description="Extensiones de Pestañas en Gandía" link="https://www.liralashes.com"/>
+        <PortFolioItem imageUrl="public/img/liralashes.png" title="Trabajo 1" description="Este fue el primer proyecto" link="liralashes.com"/>
+        <PortFolioItem imageUrl="public/img/liralashes.png" title="Trabajo 1" description="Este fue el primer proyecto" link="liralashes.com"/>
       </div>
     </div>
   </section>
 
   <section class="bg-gray-100 py-12">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8">Portafolio</h2>
+      <h2 class="text-3xl font-bold mb-8">Servicios</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Aquí puedes iterar sobre tus proyectos y renderizar un PortfolioItem para cada uno -->
-        <PortfolioItem imageUrl="public/img/liralashes.png" title="Trabajo 1" description="Este fue el primer proyecto" link="liralashes.com"/>
-        <PortfolioItem imageUrl="public/img/liralashes.png" title="Trabajo 1" description="Este fue el primer proyecto" link="liralashes.com"/>
-        <PortfolioItem imageUrl="public/img/liralashes.png" title="Trabajo 1" description="Este fue el primer proyecto" link="liralashes.com"/>
+        <ServiceCard title="Servicio 1" description='Este es el primer servicio' price='45 €'/>
+        <ServiceCard title="Servicio 1" description='Este es el primer servicio' price='45 €'/>
+        <ServiceCard title="Servicio 1" description='Este es el primer servicio' price='45 €'/>
       </div>
     </div>
   </section>
