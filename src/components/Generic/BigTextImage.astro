@@ -10,7 +10,7 @@ const styleConstants = [
 const {title, text, image, side, color, bg} = Astro.props;
 
 ---
-<section class=" w-full relative ">
+<section data-theme="orange" class=" w-full relative ">
     <aside class=`w-full relative z-20 p-12 text-${side} text-${color} ${bg}`>
         
         <h2 class="w-full font-serif text-7xl font-bold mb-10 px-12 text-white">{title}</h2>

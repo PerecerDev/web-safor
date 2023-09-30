@@ -1,5 +1,5 @@
 ---
-
+import Logo from "../Generic/Logo.astro"
 import {
 
 
@@ -14,13 +14,12 @@ const styleConstants = [
 
 ---
 
-<section class="flex justify-between items-center h-20 border-black border-b-[1px] fixed top-0 left-0 w-full bg-white z-50">
-    <a href="/" class="ml-4">
-        <img src="public/img/logo.png" alt="WebSafor Logo" class="h-16 w-auto"/>
-    </a>
+<section class=" bg-opacity-0 flex justify-between items-center h-20 fixed top-0 left-0 w-full bg-white z-50 border-b-[1px] border-b-black">
 
-    <a href="/" class="mr-4">
-        Menu
+    <Logo />
+
+    <a href="/" class="mr-4 font-thin text-4xl">
+        +
     </a>
 </section>
 
