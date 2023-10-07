@@ -1,31 +1,31 @@
 ---
 import StickyHeaderBar from "../components/Header/StickyHeaderBar.astro";
+import Logo from "../components/Generic/Logo.astro";
 import BigText from "../components/Generic/BigText.astro";
 import BigTextImage from "../components/Generic/BigTextImage.astro";
 
 import FullTextButton from "../components/Generic/FullTextButton.astro";
 import ButtonCTA from "../components/Generic/ButtonCTA.astro";
 
-import {
+import {} from "../styleConstants.js";
+const styleConstants = [].join(' ');
 
-
-
-} from "../styleConstants.js";
-
-const styleConstants = [
-
-
-
-].join(' ');
 ---
 
-<header class="bg-theme-surface-2 text-theme-on-surface-2">
+<header class="">
     <div class="container mx-auto flex flex-col items-center justify-center space-y-4">
         <!-- TopHeaderBar -->
         <StickyHeaderBar />
 
+
         <!-- Full Text Block -->
-        <BigText title='Consigue más clientes con tu propia web' side="left" color="black" bg="bg-white"/>
+        <section data-theme="white" class=`grid place-content-center w-full h-screen px-12 text-black bg-white`>
+
+            <Logo classes=" mx-auto mb-16 w-44 block"/>
+
+            <h1 class=" w-full text-left font-serif text-6xl leading-60px font-bold">Consigue más clientes con tu propia web</h1>
+        
+        </section>
 
         <!-- Full Text Block -->
         <BigTextImage title='¿Cuánto cuesta una web?' text="Desde 890 €" side="right" bg="bg-orange-200" color="blue-950" image="../../public/img/pensando2.png"/>

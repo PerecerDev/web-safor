@@ -10,6 +10,9 @@ module.exports = {
 			backgroundSize: {
 			'10px': '10px 10px'
 			},
+			lineHeight:{
+				'60px': '80px',
+			}
 		},
 	},
 	plugins: [],

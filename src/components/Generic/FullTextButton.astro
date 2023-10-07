@@ -12,12 +12,12 @@ const {title, subtitle, text, button, link, side, color, bg} = Astro.props;
 ---
 
 <section data-theme="green" class=`w-full !mt-0 p-12 pt-48 text-${side} text-${color} ${bg}`>
-    <h1 class="w-full font-serif text-7xl font-bold mb-4">{title}</h1>
+    <h1 class="w-full font-serif text-6xl text-right font-bold mb-4">{title}</h1>
     <h3 class="w-full font-sans text-xl font-thin mb-10">{subtitle}</h3>
     <span class="w-full font-sans text-4xl font-thin">{text}</span>
     <!-- Botón CTA presupuesto -->
     
-    <a href={link} class={"block w-full p-8 mt-14 mb-2 text-center rounded-md text-teal-900 bg-white text-3xl font-sans font-thin"}>
+    <a href={link} class={"block w-full p-6 mt-14 mb-2 text-center rounded-md text-teal-900 bg-white text-3xl font-sans font-thin"}>
         {button}
     </a>
 

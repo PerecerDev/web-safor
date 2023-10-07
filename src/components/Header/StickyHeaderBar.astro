@@ -1,25 +1,35 @@
 ---
 import Logo from "../Generic/Logo.astro"
-import {
+import {} from "../../styleConstants.js";
 
-
-
-} from "../../styleConstants.js";
-
-const styleConstants = [
-
-    
-
-].join(' ');
+const styleConstants = [].join(' ');
 
 ---
 
-<section class=" bg-opacity-0 flex justify-between items-center h-20 fixed top-0 left-0 w-full bg-white z-50 border-b-[1px] border-b-black">
+<section id="sticky-header" class=" hidden bg-opacity-0 transition-all duration-300 justify-between items-center h-20 fixed top-0 left-0 w-full bg-white z-50 border-b-[1px] border-b-black">
 
-    <Logo />
+    <Logo classes="block w-16 ml-8"/>
 
     <a href="/" class="mr-4 font-thin text-4xl">
         +
     </a>
 </section>
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+const stickyHeader = document.getElementById('sticky-header');
+const secondSection = document.getElementById('second-section');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY >= secondSection.offsetTop) {
+        stickyHeader.style.display = 'flex';
+    } else {
+        stickyHeader.style.display = 'none';
+    }
+});
+
+});
+
+</script>
 

@@ -28,8 +28,8 @@ const { title } = Astro.props;
 		<title>{title ? `${title} - WebSafor` : 'WebSafor'}</title>
 
 	</head>
-	<body class=``>
-		<main class=`container mx-auto mt-20`>
+	<body class=" m-0 p-0 ">
+		<main class=`container mx-auto`>
 			<slot></slot> <!-- Este slot permitirá insertar el contenido de las páginas que utilicen este layout -->
 		</main>
 	</body>

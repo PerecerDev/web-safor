@@ -7,8 +7,8 @@ const {title, side, color, bg} = Astro.props;
 
 ---
 
-<section data-theme="white" class=`w-full p-12 text-${side} text-${color} ${bg}`>
+<section data-theme="white" class=`grid w-full items-center p-12 text-${side} text-${color} ${bg}`>
 
-    <h1 class="w-full font-serif text-7xl font-bold mb-4">{title}</h1>
+    <h1 class=" w-full font-serif text-6xl leading-80px font-bold">{title}</h1>
 
 </section>
