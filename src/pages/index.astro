@@ -121,9 +121,9 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="container mx-auto text-center">
       <h2 class="text-5xl font-bold font-serif mb-14">Algunos de nuestros últimos trabajos</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <PortFolioItem imageUrl="public/img/liralashes.png" title="Lira Lashes" subtitle="Extensiones de Pestañas en Gandía" type="Web de Servicios" link="liralashes.com"/>
-        <PortFolioItem imageUrl="public/img/solycoco.png" title="Soly Cocó" subtitle="Portal de información de playas" type="Blog de noticias" link="solycoco.com"/>
-        <PortFolioItem imageUrl="public/img/gestionisabelhita.png" title="Gestión Isabel Hita" subtitle="Gestión de empresas y fincas en Xeraco" type="Landing Page" link="gestionisabelhita.com"/>
+        <PortFolioItem imageUrl="public/img/ultimos-trabajos/liralashes.png" title="Lira Lashes" subtitle="Extensiones de Pestañas en Gandía" type="Web de Servicios" link="liralashes.com"/>
+        <PortFolioItem imageUrl="public/img/ultimos-trabajos/solycoco.png" title="Soly Cocó" subtitle="Portal de información de playas" type="Blog de noticias" link="solycoco.com"/>
+        <PortFolioItem imageUrl="public/img/ultimos-trabajos/gestionisabelhita.png" title="Gestión Isabel Hita" subtitle="Gestión de empresas y fincas en Xeraco" type="Landing Page" link="gestionisabelhita.com"/>
       </div>
     </div>
   </section>
@@ -136,13 +136,12 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
           <!-- Diseño Web -->
           <div class="p-12 md:w-1/3 flex flex-col text-center items-center">
-            <div class="w-20 h-20 inline-flex items-center justify-center rounded-full bg-orange-200 text-teal-950 mb-5 flex-shrink-0">
-              <!-- Diseño Web -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="2" y1="22" x2="22" y2="22"></line>
-              </svg>
+            <div class="relative w-24 h-24">
+              <div class="relative w-20 h-20 inline-flex items-center justify-center rounded-full bg-orange-200 text-teal-950 mb-5 flex-shrink-0"></div>
+              <img src="../../public/img/servicios/webs.png" class="absolute z-10 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
             </div>
+            
+            
             <div class="flex-grow">
               <h2 class="font-sans text-2xl font-medium mb-3">Creación Web</h2>
               <span class="font-sans text-xl font-thin">Diseño responsivo, e-commerce, blogs y más. Adaptamos tu sitio a las necesidades de tu negocio.</span>
@@ -151,11 +150,9 @@ document.addEventListener("DOMContentLoaded", function() {
           </div>
           <!-- Mantenimiento Web -->
           <div class="p-12 md:w-1/3 flex flex-col text-center items-center">
-            <div class="w-20 h-20 inline-flex items-center justify-center rounded-full bg-orange-200 text-teal-950 mb-5 flex-shrink-0">
-              <!-- Mantenimiento Web -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10">
-                <path d="M2.5 0l-2.5 3 2.5 3 2.5-3-2.5-3zm19.5 3l2.5 3-2.5 3-2.5-3 2.5-3zm-11.5 5v14h5v-14h-5zm-7 2.5l-3 2.5 3 2.5 3-2.5-3-2.5zm15 0l-3 2.5 3 2.5 3-2.5-3-2.5zm-15 5l-3 2.5 3 2.5 3-2.5-3-2.5zm15 0l-3 2.5 3 2.5 3-2.5-3-2.5z"></path>
-              </svg>
+            <div class="relative w-24 h-24">
+              <div class="relative w-20 h-20 inline-flex items-center justify-center rounded-full bg-orange-200 text-teal-950 mb-5 flex-shrink-0"></div>
+              <img src="../../public/img/servicios/content.png" class="absolute z-10 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
             </div>
             <div class="flex-grow">
               <h2 class="font-sans text-2xl font-medium mb-3">Contenido Web</h2>
@@ -165,12 +162,9 @@ document.addEventListener("DOMContentLoaded", function() {
           </div>
           <!-- Diseño Gráfico -->
           <div class="p-12 md:w-1/3 flex flex-col text-center items-center">
-            <div class="w-20 h-20 inline-flex items-center justify-center rounded-full bg-orange-200 text-teal-950 mb-5 flex-shrink-0">
-              <!-- Diseño Gráfico -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10">
-                <path d="M12 1v22M1 11h22"></path>
-                <path d="M4.22 4.22l14.56 14.56"></path>
-              </svg>
+            <div class="relative w-24 h-24">
+              <div class="relative w-20 h-20 inline-flex items-center justify-center rounded-full bg-orange-200 text-teal-950 mb-5 flex-shrink-0"></div>
+              <img src="../../public/img/servicios/graphic-design.png" class="absolute z-10 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
             </div>
             <div class="flex-grow">
               <h2 class="font-sans text-2xl font-medium mb-3">Diseño Gráfico</h2>
@@ -189,72 +183,35 @@ document.addEventListener("DOMContentLoaded", function() {
         <h2 class="text-6xl font-bold font-serif mb-20">Ejemplos de distintos tipos de webs</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
 
-            <!-- Sitio Web Corporativo -->
-            <div class="rounded-md bg-white p-4 shadow-md hover:shadow-lg">
-                <div class="relative bg-gray-300 h-60 mb-4">
-                    <div class="absolute top-5 left-5 text-black bg-gray-400 p-1 rounded">Logo</div>
-                    <div class="absolute bottom-5 left-5 text-black text-xs bg-gray-400 p-1 rounded">Inicio</div>
-                    <div class="absolute bottom-5 center-5 text-black text-xs bg-gray-400 p-1 rounded">Servicios</div>
-                    <div class="absolute bottom-5 right-5 text-black text-xs bg-gray-400 p-1 rounded">Contacto</div>
-                </div>
-                <h3 class="text-black text-xl font-bold mb-4">Sitio Web Corporativo</h3>
-                <p class="text-black text-sm">Diseñado principalmente para empresas, proporciona información sobre la organización y sus servicios o productos.</p>
-            </div>
-
-            <!-- Blog -->
-            <div class="rounded-md bg-white p-4 shadow-md hover:shadow-lg">
-                <div class="relative bg-gray-300 h-60 mb-4">
-                    <div class="absolute top-5 left-5 text-black bg-gray-400 p-1 rounded">Blog Nombre</div>
-                    <div class="absolute top-20 left-5 text-black text-xs bg-gray-500 p-1 rounded">"Título del último post"</div>
-                    <div class="absolute bottom-5 left-5 text-black text-xs bg-gray-400 p-1 rounded">Categorías</div>
-                    <div class="absolute bottom-5 right-5 text-black text-xs bg-gray-400 p-1 rounded">Suscribirse</div>
-                </div>
-                <h3 class="text-black text-xl font-bold mb-4">Blog</h3>
-                <p class="text-black text-sm">Un sitio web personal o corporativo que contiene entradas de contenido, artículos o publicaciones, generalmente en orden cronológico.</p>
-            </div>
-
-            <!-- E-commerce -->
-            <div class="rounded-md bg-white p-4 shadow-md hover:shadow-lg">
-                <div class="relative bg-gray-300 h-60 mb-4">
-                    <div class="absolute top-5 left-5 text-black bg-gray-400 p-1 rounded">Tienda</div>
-                    <div class="absolute top-20 left-5 text-black text-xs bg-gray-500 p-1 rounded">Producto 1 <i class="fas fa-tag"></i></div>
-                    <div class="absolute top-20 right-5 text-black text-xs bg-gray-500 p-1 rounded">Producto 2 <i class="fas fa-tag"></i></div>
-                    <div class="absolute bottom-5 center-5 text-black text-xs bg-gray-400 p-1 rounded">Carrito <i class="fas fa-shopping-cart"></i></div>
-                </div>
-                <h3 class="text-black text-xl font-bold mb-4">E-commerce</h3>
-                <p class="text-black text-sm">Sitio web diseñado para la venta de productos o servicios en línea, incluyendo carritos de compra y métodos de pago.</p>
-            </div>
-
-            <!-- Portafolio -->
-            <div class="rounded-md bg-white p-4 shadow-md hover:shadow-lg">
-                <div class="relative bg-gray-300 h-60 mb-4">
-                    <div class="absolute top-5 left-5 text-black bg-gray-400 p-1 rounded">Mi Portafolio</div>
-                    <div class="absolute top-20 left-5 text-black text-xs bg-gray-500 p-1 rounded">Proyecto 1 <i class="fas fa-image"></i></div>
-                    <div class="absolute top-20 right-5 text-black text-xs bg-gray-500 p-1 rounded">Proyecto 2 <i class="fas fa-image"></i></div>
-                </div>
-                <h3 class="text-black text-xl font-bold mb-4">Portafolio</h3>
-                <p class="text-black text-sm">Utilizado por creativos y profesionales para mostrar su trabajo y habilidades a posibles clientes o empleadores.</p>
-            </div>
-
-            <!-- Sitio Web Informativo -->
-            <div class="rounded-md bg-white p-4 shadow-md hover:shadow-lg">
-                <div class="relative bg-gray-300 h-60 mb-4">
-                    <div class="absolute top-5 left-5 text-black bg-gray-400 p-1 rounded">InfoWeb</div>
-                    <div class="absolute top-20 left-5 text-black text-xs bg-gray-500 p-1 rounded">Artículo 1 <i class="fas fa-newspaper"></i></div>
-                    <div class="absolute top-40 left-5 text-black text-xs bg-gray-500 p-1 rounded">Artículo 2 <i class="fas fa-newspaper"></i></div>
-                </div>
-                <h3 class="text-black text-xl font-bold mb-4">Sitio Web Informativo</h3>
-                <p class="text-black text-sm">Diseñado para proporcionar información detallada sobre un tema específico, como noticias, investigación o educación.</p>
-            </div>
+            
 
             <!-- Landing Page -->
             <div class="rounded-md bg-white p-4 shadow-md hover:shadow-lg">
-                <div class="relative bg-gray-300 h-60 mb-4">
-                    <div class="absolute top-5 left-5 text-black bg-gray-400 p-1 rounded">PromoWeb</div>
-                    <div class="absolute center-5 text-black text-xs bg-gray-500 p-1 rounded">¡Regístrate ahora! <i class="fas fa-arrow-right"></i></div>
-                </div>
-                <h3 class="text-black text-xl font-bold mb-4">Landing Page</h3>
-                <p class="text-black text-sm">Página única diseñada para una campaña de marketing específica, con el objetivo de convertir visitantes en clientes o suscriptores.</p>
+              <img src="../../public/img/webs/landing-page.png" />
+              <h3 class="text-black text-xl font-bold my-4">Landing Page</h3>
+              <p class="text-black text-sm">Página única diseñada para una campaña de marketing específica, con el objetivo de convertir visitantes en clientes o suscriptores.</p>
+          </div>
+
+            <!-- Portafolio -->
+            <div class="rounded-md bg-white p-4 shadow-md hover:shadow-lg">
+                <img src="../../public/img/webs/portfolio.png" />
+                <h3 class="text-black text-xl font-bold my-4">Portafolio</h3>
+                <p class="text-black text-sm">Utilizado por creativos y profesionales para mostrar su trabajo y habilidades a posibles clientes o empleadores.</p>
+              </div>
+
+            <!-- E-commerce -->
+            <div class="rounded-md bg-white p-4 shadow-md hover:shadow-lg">
+                <img src="../../public/img/webs/ecommerce.png" />
+                <h3 class="text-black text-xl font-bold my-4">E-commerce</h3>
+                <p class="text-black text-sm">Sitio web diseñado para la venta de productos o servicios en línea, incluyendo carritos de compra y métodos de pago.</p>
+            </div>
+
+
+            <!-- Blog -->
+            <div class="rounded-md bg-white p-4 shadow-md hover:shadow-lg">
+              <img src="../../public/img/webs/blog.png" />
+              <h3 class="text-black text-xl font-bold my-4">Blog</h3>
+              <p class="text-black text-sm">Un sitio web personal o corporativo que contiene entradas de contenido, artículos o publicaciones, generalmente en orden cronológico.</p>
             </div>
 
         </div>
@@ -270,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="rounded-md bg-teal-900 p-6 shadow-md hover:shadow-lg">
                 <p class="text-lg font-thin mb-6">"Desde que trabajamos con WebSafor, nuestro negocio ha crecido exponencialmente. Su profesionalismo y dedicación son inigualables."</p>
                 <div class="flex items-center">
-                    <img src="../../public/img/juan-ramon.png" alt="Cliente 1" class="w-12 h-12 rounded-full mr-4">
+                    <img src="../../public/img/testimonios/juan-ramon.png" alt="Cliente 1" class="w-12 h-12 rounded-full mr-4">
                     <div>
                         <h4 class="text-xl font-bold">Juan Pérez</h4>
                         <span class="text-sm font-thin">CEO, Empresa X</span>
@@ -282,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="rounded-md bg-teal-900 p-6 shadow-md hover:shadow-lg">
                 <p class="text-lg font-thin mb-6">"WebSafor transformó nuestra visión en una realidad digital. Estamos más que satisfechos con los resultados."</p>
                 <div class="flex items-center">
-                    <img src="../../public/img/juan-ramon.png" alt="Cliente 2" class="w-12 h-12 rounded-full mr-4">
+                    <img src="../../public/img/testimonios/juan-ramon.png" alt="Cliente 2" class="w-12 h-12 rounded-full mr-4">
                     <div>
                         <h4 class="text-xl font-bold">María Rodríguez</h4>
                         <span class="text-sm font-thin">Fundadora, Negocio Y</span>
@@ -294,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="rounded-md bg-teal-900 p-6 shadow-md hover:shadow-lg">
                 <p class="text-lg font-thin mb-6">"El equipo de WebSafor es increíblemente talentoso y dedicado. Nuestra web nunca ha lucido mejor."</p>
                 <div class="flex items-center">
-                    <img src="../../public/img/juan-ramon.png" alt="Cliente 3" class="w-12 h-12 rounded-full mr-4">
+                    <img src="../../public/img/testimonios/juan-ramon.png" alt="Cliente 3" class="w-12 h-12 rounded-full mr-4">
                     <div>
                         <h4 class="text-xl font-bold">Luis Álvarez</h4>
                         <span class="text-sm font-thin">Manager, Compañía Z</span>
