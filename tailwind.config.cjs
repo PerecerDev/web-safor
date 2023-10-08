@@ -11,7 +11,7 @@ module.exports = {
 			'10px': '10px 10px'
 			},
 			lineHeight:{
-				'60px': '80px',
+				'4rem': '4rem',
 			}
 		},
 	},

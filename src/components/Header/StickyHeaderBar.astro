@@ -6,30 +6,58 @@ const styleConstants = [].join(' ');
 
 ---
 
-<section id="sticky-header" class=" hidden bg-opacity-0 transition-all duration-300 justify-between items-center h-20 fixed top-0 left-0 w-full bg-white z-50 border-b-[1px] border-b-black">
+<section id="sticky-header" class="hidden bg-opacity-0 transition-all duration-300 flex flex-col justify-between items-center h-auto fixed top-0 left-0 w-full bg-white z-50 border-b-[1px] border-b-black">
 
-    <Logo classes="block w-16 ml-8"/>
+    <div class="flex w-full justify-between items-center py-2">
+        <!-- Logo a la izquierda -->
+        <Logo classes="block w-16 ml-8"/>
 
-    <a href="/" class="mr-4 font-thin text-4xl">
-        +
-    </a>
+        <!-- Botón '+' a la derecha -->
+        <a href="javascript:void(0)" id="toggleButton" class="block right-0 mr-6 font-thin text-4xl">
+            +
+        </a>
+    </div>
+
+    <!-- Menú de navegación debajo -->
+    <nav id="navMenu" class="hidden w-full font-sans font-normal text-xl mt-2 mb-8">
+        <ul class="grid columns-1 gap-5 text-right mr-6 space-x-8">
+            <li><a href="/" class="">Inicio</a></li>
+            <li><a href="/services" class="">Servicios</a></li>
+            <li><a href="/portfolio" class="">Portafolio</a></li>
+            <li><a href="/contact" class="">Contacto</a></li>
+        </ul>
+    </nav>
+
 </section>
+
+
+
 <script>
 
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
 
-const stickyHeader = document.getElementById('sticky-header');
-const secondSection = document.getElementById('second-section');
+        const stickyHeader = document.getElementById('sticky-header');
+        const secondSection = document.getElementById('second-section');
 
-window.addEventListener('scroll', function() {
-    if (window.scrollY >= secondSection.offsetTop) {
-        stickyHeader.style.display = 'flex';
-    } else {
-        stickyHeader.style.display = 'none';
-    }
-});
-
-});
+        window.addEventListener('scroll', function() {
+            if (window.scrollY >= secondSection.offsetTop) {
+                stickyHeader.style.display = 'flex';
+            } else {
+                stickyHeader.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('toggleButton').addEventListener('click', function() {
+            var navMenu = document.getElementById('navMenu');
+            if (navMenu.classList.contains('hidden')) {
+                navMenu.classList.remove('hidden');
+                this.textContent = '-';
+            } else {
+                navMenu.classList.add('hidden');
+                this.textContent = '+';
+            }
+        });
+    });
 
 </script>
 
