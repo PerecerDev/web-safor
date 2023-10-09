@@ -1,4 +1,5 @@
 ---
+
 import {
 
 } from "../../styleConstants.js";
@@ -17,8 +18,20 @@ const {title, subtitle, text, button, link, side, color, bg} = Astro.props;
     <span class="w-full font-sans text-4xl font-thin">{text}</span>
     <!-- Botón CTA presupuesto -->
     
-    <a href={link} class={"block w-full p-6 mt-14 mb-2 text-center rounded-md text-teal-900 bg-white text-3xl font-sans font-thin"}>
+    <a id="openPopUpBudget" href={link} class={"block w-full p-6 mt-14 mb-2 text-center rounded-md text-teal-900 bg-white text-3xl font-sans font-thin"}>
         {button}
     </a>
 
+
 </section>
+
+
+
+<script>
+
+    document.querySelector('#openPopUpBudget').addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('popUpBudget').classList.remove('hidden');
+    });
+
+</script>
