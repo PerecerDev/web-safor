@@ -1,7 +1,8 @@
 ---
-
+    
 
 ---
+
 <section id="popUpBudget" class="hidden grid place-items-center fixed z-50 top-0 left-0 right-0 !mt-0 w-full h-screen bg-white overflow-y-auto">    
     <div id="closePopUp" class="absolute top-4 right-4 text-right rounded-xl text-lg text-teal-900 cursor-pointer hover:bg-gray-200 p-2">X</div>
     <div id="popUpcontent" class="text-center p-8">
@@ -12,11 +13,11 @@
         </div>
         
         <div id="questionScreens" class="hidden">
-            <p id="questionIndicator" class="mb-4 text-xl">Categoría 1 de 11</p>
-            <form id="questionForm" class="space-y-4 mx-auto max-w-xl">
+            <p id="questionIndicator" class="text-md top-6 left-0 right-0 block absolute"></p>
+            <form id="questionForm" class="space-y-4 mx-auto max-w-xl mb-20">
                 <!-- Aquí se insertarán las preguntas dinámicamente -->
             </form>
-            <div class="mt-4 space-x-4">
+            <div class=" space-x-4">
                 <button type="button" id="prevCategory" class="hidden px-4 py-2 border border-gray-300 rounded hover:bg-gray-100">← Anterior</button>
                 <button type="button" id="nextCategory" class="px-4 py-2 bg-teal-900 text-white rounded hover:bg-teal-800">Siguiente →</button>
             </div>
@@ -34,164 +35,13 @@
 
 
 <script>
+
+    import {toAsk} from "./PriceList.js";
+    const questions = toAsk;
+
     document.getElementById('closePopUp').addEventListener('click', function(e){
         document.getElementById('popUpBudget').classList.add('hidden');
     });
-    const questions = [
-        {
-            title: "Tipo de Web",
-            items: [
-                {
-                    type: "select",
-                    label: "¿Qué tipo de web necesitas?",
-                    options: [
-                        { label: "Presentación (Landing Page)", price: 300 },
-                        { label: "Servicios", price: 500 },
-                        { label: "Tienda Online", price: 1200 },
-                        { label: "Personalizada", price: 2000 }
-                    ],
-                    name: "webType"
-                }
-            ]
-        },
-        {
-            title: "Funcionalidades",
-            items: [
-                {
-                    type: "checkbox",
-                    label: "¿Qué funcionalidades necesita en su web?",
-                    options: [
-                        { label: "Formulario de contacto", price: 50 },
-                        { label: "Sección de noticias (blog)", price: 200 },
-                        { label: "Galería", price: 150 },
-                        { label: "Sistema de reservas", price: 300 },
-                        { label: "Integración con redes sociales", price: 100 },
-                        { label: "Comentarios y valoraciones", price: 100 },
-                        { label: "Suscripción a newsletter", price: 80 },
-                        { label: "Área de miembros", price: 250 },
-                        { label: "Chat en vivo", price: 150 },
-                        { label: "Multilenguaje", price: 300 }
-                    ],
-                    name: "webFeatures"
-                }
-            ]
-        },
-        {
-            title: "Identidad de Marca",
-            items: [
-                {
-                    type: "select",
-                    label: "¿Tiene logotipo y estilo de marca?",
-                    options: [
-                        { label: "Tengo logo y estilo de marca", price: 0 },
-                        { label: "Solo tengo logo", price: 150 },
-                        { label: "Solo tengo estilo de marca", price: 150 },
-                        { label: "No tengo ninguna", price: 300 }
-                    ],
-                    name: "brandIdentity"
-                }
-            ]
-        },
-        {
-            title: "Contenido para la Web",
-            items: [
-                {
-                    type: "select",
-                    label: "¿Tiene contenido para su web?",
-                    options: [
-                        { label: "Sí, lo tengo", price: 0 },
-                        { label: "No, me gustaría contratarlo", price: 500 } // Este precio es un estimado general. Puede variar según el contenido.
-                    ],
-                    name: "webContent"
-                },
-                {
-                    type: "checkbox",
-                    label: "¿Qué tipo de contenido necesita?",
-                    options: [
-                        { label: "Redacción de textos", price: 200 },
-                        { label: "Fotografía", price: 300 },
-                        { label: "Producción de video", price: 500 }
-                    ],
-                    name: "contentTypes"
-                }
-            ]
-        },
-        {
-            title: "Público Objetivo",
-            items: [
-                {
-                    type: "checkbox",
-                    label: "¿A qué público se dirige su negocio?",
-                    options: [
-                        { label: "Mujeres", price: 0 }, // No hay un costo adicional asociado a la demografía en este ejemplo.
-                        { label: "Hombres", price: 0 },
-                        { label: "Ambos", price: 0 }
-                    ],
-                    name: "targetGender"
-                },
-                {
-                    type: "select",
-                    label: "¿De qué edad?",
-                    options: [
-                        { label: "Entre 18 y 30", price: 0 },
-                        { label: "Entre 31 y 50", price: 0 },
-                        { label: "Más de 50", price: 0 },
-                        { label: "Todas las edades", price: 0 }
-                    ],
-                    name: "targetAge"
-                }
-            ]
-        },
-        {
-            title: "Dominio y Alojamiento",
-            items: [
-                {
-                    type: "select",
-                    label: "¿Ya cuentan con un dominio y alojamiento web o necesitarán ayuda con esto?",
-                    options: [
-                        { label: "Tengo dominio y hosting", price: 0 },
-                        { label: "Tengo dominio", price: 50 },
-                        { label: "No tengo nada", price: 150 }
-                    ],
-                    name: "domainHosting"
-                }
-            ]
-        },
-        {
-            title: "Mantenimiento y Actualizaciones",
-            items: [
-                {
-                    type: "select",
-                    label: "¿Le gustaría un paquete de mantenimiento para su sitio web?",
-                    options: [
-                        { label: "No, me encargaré yo mismo", price: 0 },
-                        { label: "Sí, mantenimiento mensual", price: 100 },
-                        { label: "Sí, mantenimiento trimestral", price: 250 },
-                        { label: "Sí, mantenimiento anual", price: 900 }
-                    ],
-                    name: "maintenancePackage"
-                }
-            ]
-        },
-        {
-            title: "Integraciones Especiales",
-            items: [
-                {
-                    type: "checkbox",
-                    label: "¿Requiere alguna integración especial?",
-                    options: [
-                        { label: "Integración con CRM", price: 300 },
-                        { label: "Integración con sistema de pago", price: 200 },
-                        { label: "Integración con sistema de facturación", price: 250 },
-                        { label: "APIs personalizadas", price: 500 },
-                        { label: "Integración con tienda física", price: 400 }
-                    ],
-                    name: "specialIntegrations"
-                }
-            ]
-        }
-    ];
-
 
     let answers = {};
 
@@ -204,47 +54,58 @@
     document.getElementById('startButton').addEventListener('click', function() {
         document.getElementById('introScreen').classList.add('hidden');
         document.getElementById('questionScreens').classList.remove('hidden');
+        document.getElementById('questionIndicator').textContent = `${currentCategory} / ${totalCategories}`;
+
     });
     document.getElementById('nextCategory').addEventListener('click', function() {
-        // Almacenar las respuestas actuales
-        let currentInputs = document.querySelectorAll(`.category[data-category="${currentCategory}"] input, .category[data-category="${currentCategory}"] select`);
-        currentInputs.forEach(input => {
-            if (input.type === "text" || input.type === "select-one") {
+    // Almacenar las respuestas actuales
+    let currentInputs = document.querySelectorAll(`.category[data-category="${currentCategory}"] input, .category[data-category="${currentCategory}"] select`);
+    currentInputs.forEach(input => {
+        if (input.type === "text" || input.type === "select-one" || input.type === "radio") {
+            if (input.checked || input.type !== "radio") {  // Asegurarse de que el radio esté seleccionado
                 answers[input.name] = input.value;
-            } else if (input.type === "checkbox" && input.checked) {
-                if (!answers[input.name]) {
-                    answers[input.name] = [];
-                }
-                answers[input.name].push(input.value);
             }
-        });
+        } else if (input.type === "checkbox" && input.checked) {
+            if (!answers[input.name]) {
+                answers[input.name] = [];
+            }
+            answers[input.name].push(input.value);
+        }
+    });
+
 
         if (currentCategory < totalCategories) {
             document.querySelector(`.category[data-category="${currentCategory}"]`).classList.add('hidden');
             currentCategory++;
             document.querySelector(`.category[data-category="${currentCategory}"]`).classList.remove('hidden');
-            document.getElementById('questionIndicator').textContent = `Categoría ${currentCategory} de ${totalCategories}`;
+            document.getElementById('questionIndicator').textContent = `${currentCategory} / ${totalCategories}`;
             if (currentCategory > 1) {
                 document.getElementById('prevCategory').classList.remove('hidden');
             }
         }  else {
             document.getElementById('questionScreens').classList.add('hidden');
+            document.getElementById('finalScreen').classList.remove('hidden');
             
             // Mostrar las respuestas en la pantalla final
             let summary = document.getElementById('summary');
             let answerList = '';
             for (let key in answers) {
-                let questionLabel = findQuestionLabelByKey(key);
-                answerList += `<div class="mb-4">`;
-                answerList += `<p>${questionLabel}:</p>`;
-                if (Array.isArray(answers[key])) {
-                    answerList += `<p class="font-bold ml-4">${answers[key].join(', ')}</p>`;
-                } else {
-                    answerList += `<p class="font-bold ml-4">${answers[key]}</p>`;
+                if (answers[key]) {  // Asegurarse de que la respuesta tiene valor
+                //if (answers[key] && answers[key].length > 0) {  // Asegurarse de que la respuesta tiene valor
+
+                    let questionLabel = findQuestionLabelByKey(key);
+                    answerList += `<div class="mb-4">`;
+                    answerList += `<p>${questionLabel}:</p>`;
+                    if (Array.isArray(answers[key])) {
+                        answerList += `<p class="font-bold ml-4">${answers[key].join(', ')}</p>`;
+                    } else {
+                        answerList += `<p class="font-bold ml-4">${answers[key]}</p>`;
+                    }
+                    answerList += `</div>`;
                 }
-                answerList += `</div>`;
             }
             summary.innerHTML = answerList;
+
             
             // Calcular el precio en función de las respuestas y mostrarlo
             let price = calculatePrice(answers);
@@ -254,41 +115,6 @@
         }
     });
 
-    function findQuestionLabelByKey(key) {
-        for (let category of questions) {
-            for (let item of category.items) {
-                if (item.name === key) {
-                    return item.label;
-                }
-            }
-        }
-        return key;  // Devuelve la clave si no se encuentra la etiqueta de la pregunta
-    }
-
-
-    function calculatePrice(answers) {
-        let price = 0;
-
-        questions.forEach(question => {
-            question.items.forEach(item => {
-                if (item.type === "select") {
-                    let selectedOption = item.options.find(option => option.label === answers[item.name]);
-                    if (selectedOption) {
-                        price += selectedOption.price;
-                    }
-                } else if (item.type === "checkbox") {
-                    answers[item.name].forEach(answerOption => {
-                        let selectedOption = item.options.find(option => option.label === answerOption);
-                        if (selectedOption) {
-                            price += selectedOption.price;
-                        }
-                    });
-                }
-            });
-        });
-
-        return price;
-    }
 
 
     document.getElementById('prevCategory').addEventListener('click', function() {
@@ -303,6 +129,44 @@
         }
     });
 
+    
+    function findQuestionLabelByKey(key) {
+        for (let category of questions) {
+            for (let item of category.items) {
+                if (item.name === key) {
+                    return item.label;
+                }
+            }
+        }
+        return key;  // Devuelve la clave si no se encuentra la etiqueta de la pregunta
+    }
+
+    function calculatePrice(answers) {
+        let price = 0;
+
+        questions.forEach(question => {
+            question.items.forEach(item => {
+                if (item.type === "select" || item.type === "radio") {
+                    let selectedOption = item.options.find(option => option.label === answers[item.name]);
+                    if (selectedOption) {
+                        price += selectedOption.price;
+                    }
+                } else if (item.type === "checkbox" && answers[item.name]) {
+                    answers[item.name].forEach(answerOption => {
+                        let selectedOption = item.options.find(option => option.label === answerOption);
+                        if (selectedOption) {
+                            price += selectedOption.price;
+                        }
+                    });
+                }
+            });
+        });
+
+        return price;
+    }
+
+
+
     document.getElementById('restartButton').addEventListener('click', function() {
         // Reiniciar el formulario y volver a la pantalla de inicio
         document.getElementById('finalScreen').classList.add('hidden');
@@ -316,69 +180,76 @@
     });
 
     // Función para generar las preguntas
-function generateQuestions() {
-    const form = document.getElementById('questionForm');
-    questions.forEach((category, index) => {
-        const categoryDiv = document.createElement('div');
-        categoryDiv.classList.add('category');
-        categoryDiv.setAttribute('data-category', index + 1);
-        if (index !== 0) {
-            categoryDiv.classList.add('hidden');
-        }
-
-        category.items.forEach(item => {
-            const questionDiv = document.createElement('div');
-            questionDiv.classList.add('mb-4');
-
-            const label = document.createElement('label');
-            label.textContent = item.label;
-            label.classList.add('block', 'mb-2');
-            questionDiv.appendChild(label);
-
-            if (item.type === "text") {
-                const input = document.createElement('input');
-                input.type = "text";
-                input.id = item.name;
-                input.name = item.name;
-                input.classList.add('w-full', 'p-2', 'border', 'rounded');
-                questionDiv.appendChild(input);
-            } else if (item.type === "checkbox" || item.type === "radio") {
-                item.options.forEach(option => {
-                    const optionDiv = document.createElement('div');
-                    optionDiv.classList.add('mb-1');
-
-                    const input = document.createElement('input');
-                    input.type = item.type;
-                    input.name = item.name;
-                    input.value = option.label;  // Cambio aquí
-                    optionDiv.appendChild(input);
-
-                    const optionLabel = document.createElement('label');
-                    optionLabel.textContent = option.label;  // Cambio aquí
-                    optionLabel.classList.add('ml-2');
-                    optionDiv.appendChild(optionLabel);
-
-                    questionDiv.appendChild(optionDiv);
-                });
-            } else if (item.type === "select") {
-                const select = document.createElement('select');
-                select.id = item.name;
-                select.name = item.name;
-                item.options.forEach(option => {
-                    const optionElement = document.createElement('option');
-                    optionElement.value = option.label;  // Cambio aquí
-                    optionElement.textContent = option.label;  // Cambio aquí
-                    select.appendChild(optionElement);
-                });
-                questionDiv.appendChild(select);
+    function generateQuestions() {
+        const form = document.getElementById('questionForm');
+        questions.forEach((category, index) => {
+            const categoryDiv = document.createElement('div');
+            categoryDiv.classList.add('category');
+            categoryDiv.setAttribute('data-category', index + 1);
+            if (index !== 0) {
+                categoryDiv.classList.add('hidden');
             }
 
-            categoryDiv.appendChild(questionDiv);
-        });
+            category.items.forEach(item => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('mb-4');
 
-        form.appendChild(categoryDiv);
-    });
-}
+                const label = document.createElement('label');
+                label.textContent = item.label;
+                label.classList.add('block','font-bold','text-2xl','font-serif','mb-6', 'mt-14');
+                questionDiv.appendChild(label);
+
+                if (item.type === "text") {
+                    const input = document.createElement('input');
+                    input.type = "text";
+                    input.id = item.name;
+                    input.name = item.name;
+                    input.classList.add('w-full', 'p-2', 'border', 'rounded');
+                    questionDiv.appendChild(input);
+                } else if (item.type === "checkbox" || item.type === "radio") {
+                    item.options.forEach(option => {
+                        const optionDiv = document.createElement('div');
+                        optionDiv.classList.add('mb-1', 'text-left', 'py-2','px-6');
+
+                        const input = document.createElement('input');
+                        input.type = item.type;
+                        input.name = item.name;
+                        input.value = option.label;
+
+                        if (option.checked) {  // Si la opción tiene el atributo checked, la marca por defecto
+                            input.setAttribute('checked', 'checked');
+                        }
+
+                        optionDiv.appendChild(input);
+
+                        const optionLabel = document.createElement('label');
+                        optionLabel.textContent = option.label;
+                        optionLabel.classList.add('ml-2');
+                        optionDiv.appendChild(optionLabel);
+
+                        questionDiv.appendChild(optionDiv);
+                    });
+                } else if (item.type === "select") {
+                    const select = document.createElement('select');
+                    select.id = item.name;
+                    select.name = item.name;
+                    item.options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.label;
+                        optionElement.textContent = option.label;
+                        select.appendChild(optionElement);
+                        select.classList.add('mb-1');
+                    });
+                    questionDiv.appendChild(select);
+                }
+
+                categoryDiv.appendChild(questionDiv);
+            });
+
+            form.appendChild(categoryDiv);
+        });
+    }
+
 
 
 // Llamar a la función al cargar la página
