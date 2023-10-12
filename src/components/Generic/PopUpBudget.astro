@@ -4,7 +4,7 @@
 ---
 
 <section id="popUpBudget" class="hidden grid place-items-center fixed z-40 top-0 left-0 right-0 !mt-0 w-full h-screen bg-white overflow-y-auto">    
-    <div id="closePopUp" class="absolute top-4 right-4 text-right rounded-xl text-lg text-teal-900 cursor-pointer hover:bg-gray-200 p-2">X</div>
+    <div id="closePopUp" class="absolute top-4 right-4 text-right rounded-xl text-lg text-teal-900 cursor-pointer hover:bg-gray-200 p-2 z-50">X</div>
     <div id="popUpcontent" class="text-center p-8">
         <!-- Pantalla de presentación -->
         <div id="introScreen">
@@ -37,8 +37,49 @@
 <script>
 
     import {webPrice} from "./webPrice.js";
-    
-    const questions = webPrice;
+    import {contentPrice} from "./contentPrice.js";
+    import {designPrice} from "./designPrice.js";
+
+    let questions = [];
+    let totalCategories = 0;
+
+    function setQuestions(source) {
+        switch(source) {
+            case 'webDesign':
+                questions = webPrice;
+                break;
+            case 'webContent':
+                questions = contentPrice;
+                break;
+            case 'graphicDesign':
+                questions = designPrice;
+                break;
+        }
+        totalCategories = questions.length;  // Actualizar totalCategories aquí
+        generateQuestions();
+        document.getElementById('popUpBudget').classList.remove('hidden');
+    }
+
+
+    document.querySelector('#openPopUpBudget').addEventListener('click', function(e){
+        e.preventDefault();
+        setQuestions('webDesign');
+    });
+
+    document.getElementById('webDesignBtn').addEventListener('click', function(e){
+        e.preventDefault();
+        setQuestions('webDesign');
+    });
+
+    document.getElementById('webContentBtn').addEventListener('click', function(e){
+        e.preventDefault();
+        setQuestions('webContent');
+    });
+
+    document.getElementById('graphicDesignBtn').addEventListener('click', function(e){
+        e.preventDefault();
+        setQuestions('graphicDesign');
+    });
 
     document.getElementById('closePopUp').addEventListener('click', function(e){
         document.getElementById('popUpBudget').classList.add('hidden');
@@ -47,10 +88,6 @@
     let answers = {};
 
     let currentCategory = 1;
-    const totalCategories = questions.length;
-
-    
-
 
     document.getElementById('startButton').addEventListener('click', function() {
         document.getElementById('introScreen').classList.add('hidden');
@@ -216,6 +253,8 @@
     // Función para generar las preguntas
     function generateQuestions() {
         const form = document.getElementById('questionForm');
+        form.innerHTML = ''; 
+
         questions.forEach((category, index) => {
             const categoryDiv = document.createElement('div');
             categoryDiv.classList.add('category');
