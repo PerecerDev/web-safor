@@ -10,8 +10,9 @@ const styleConstants = [].join(' ');
 
     <div class="flex w-full justify-between items-center py-2">
         <!-- Logo a la izquierda -->
-        <Logo classes="block w-16 ml-8"/>
-
+        <a href="/">
+            <Logo classes="block w-16 ml-8"/>
+        </a>
         <!-- Botón '+' a la derecha -->
         <a href="javascript:void(0)" id="toggleButton" class="block right-0 mr-6 font-thin text-4xl">
             +
@@ -21,10 +22,13 @@ const styleConstants = [].join(' ');
     <!-- Menú de navegación debajo -->
     <nav id="navMenu" class="hidden w-full font-sans font-light text-xl mt-2 mb-8">
         <ul class="grid columns-1 gap-5 text-right mr-6 space-x-8">
-            <li><a href="/" class="">Inicio</a></li>
-            <li><a href="/services" class="">Servicios</a></li>
-            <li><a href="/portfolio" class="">Portafolio</a></li>
-            <li><a href="/contact" class="">Contacto</a></li>
+            <li><a href="#tener-web" class="">La importancia de una web</a></li>
+            <li><a href="#sobre-nosotros" class="">Sobre nosotros</a></li>
+            <li><a href="#portfolio" class="">Portfolio</a></li>
+            <li><a href="#servicios" class="">Servicios</a></li>
+            <li><a href="#ejemplos" class="">Ejemplos</a></li>
+            <li><a href="#testimonios" class="">Testimonios</a></li>
+            <li><a href="#contacto" class="">Contacto</a></li>
         </ul>
     </nav>
 
@@ -32,32 +36,61 @@ const styleConstants = [].join(' ');
 
 
 
+
+
 <script>
+document.addEventListener('DOMContentLoaded', function() {
 
-    document.addEventListener('DOMContentLoaded', function() {
+    const stickyHeader = document.getElementById('sticky-header');
+    const secondSection = document.getElementById('second-section');
+    const navMenu = document.getElementById('navMenu');
+    const toggleButton = document.getElementById('toggleButton');
 
-        const stickyHeader = document.getElementById('sticky-header');
-        const secondSection = document.getElementById('second-section');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY >= secondSection.offsetTop) {
+            stickyHeader.style.display = 'flex';
+        } else {
+            stickyHeader.style.display = 'none';
+        }
+    });
 
-        window.addEventListener('scroll', function() {
-            if (window.scrollY >= secondSection.offsetTop) {
-                stickyHeader.style.display = 'flex';
-            } else {
-                stickyHeader.style.display = 'none';
-            }
-        });
-        
-        document.getElementById('toggleButton').addEventListener('click', function() {
-            var navMenu = document.getElementById('navMenu');
-            if (navMenu.classList.contains('hidden')) {
-                navMenu.classList.remove('hidden');
-                this.textContent = '-';
-            } else {
-                navMenu.classList.add('hidden');
-                this.textContent = '+';
-            }
+    toggleButton.addEventListener('click', function() {
+        if (navMenu.classList.contains('hidden')) {
+            navMenu.classList.remove('hidden');
+            this.textContent = '-';
+        } else {
+            navMenu.classList.add('hidden');
+            this.textContent = '+';
+        }
+    });
+
+    // Cerrar el menú automáticamente después de hacer clic en un enlace y ajustar la posición de desplazamiento
+    const navLinks = document.querySelectorAll('#navMenu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+
+            const targetId = this.getAttribute('href'); // Obtener el valor del atributo href (por ejemplo, "#ejemplos")
+            const targetElement = document.querySelector(targetId); // Seleccionar el elemento correspondiente en la página
+
+            // Calcular la posición de desplazamiento ajustada
+            const offset = 50; // Ajusta este valor según tus necesidades
+            const adjustedScrollPosition = targetElement.offsetTop - offset;
+
+            // Desplazarse a la posición ajustada
+            window.scrollTo({
+                top: adjustedScrollPosition,
+                behavior: 'smooth'
+            });
+
+            // Cerrar el menú
+            navMenu.classList.add('hidden');
+            toggleButton.textContent = '+';
         });
     });
+
+});
+
 
 </script>
 
