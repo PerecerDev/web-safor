@@ -3,7 +3,7 @@
 
 ---
 
-<section id="popUpBudget" class="hidden grid place-items-center fixed z-50 top-0 left-0 right-0 !mt-0 w-full h-screen bg-white overflow-y-auto">    
+<section id="popUpBudget" class="hidden grid place-items-center fixed z-40 top-0 left-0 right-0 !mt-0 w-full h-screen bg-white overflow-y-auto">    
     <div id="closePopUp" class="absolute top-4 right-4 text-right rounded-xl text-lg text-teal-900 cursor-pointer hover:bg-gray-200 p-2">X</div>
     <div id="popUpcontent" class="text-center p-8">
         <!-- Pantalla de presentación -->
@@ -14,7 +14,7 @@
         
         <div id="questionScreens" class="hidden">
             <p id="questionIndicator" class="text-md top-6 left-0 right-0 block absolute"></p>
-            <form id="questionForm" class="space-y-4 mx-auto max-w-xl mb-20">
+            <form id="questionForm" class="space-y-4 mx-auto max-w-xl mt-10 mb-20">
                 <!-- Aquí se insertarán las preguntas dinámicamente -->
             </form>
             <div class=" space-x-4">
@@ -36,8 +36,9 @@
 
 <script>
 
-    import {toAsk} from "./PriceList.js";
-    const questions = toAsk;
+    import {webPrice} from "./webPrice.js";
+    
+    const questions = webPrice;
 
     document.getElementById('closePopUp').addEventListener('click', function(e){
         document.getElementById('popUpBudget').classList.add('hidden');
@@ -122,7 +123,7 @@
             document.querySelector(`.category[data-category="${currentCategory}"]`).classList.add('hidden');
             currentCategory--;
             document.querySelector(`.category[data-category="${currentCategory}"]`).classList.remove('hidden');
-            document.getElementById('questionIndicator').textContent = `Categoría ${currentCategory} de ${totalCategories}`;
+            document.getElementById('questionIndicator').textContent = `${currentCategory} / ${totalCategories}`;
             if (currentCategory === 1) {
                 document.getElementById('prevCategory').classList.add('hidden');
             }
@@ -178,6 +179,39 @@
         }
         answers = {};
     });
+    let lastClickedIcon = null;  // Variable para rastrear el último ícono clickeado
+
+    function showTip(tipText, event) {
+        // Buscar si ya existe un tipBox
+        const existingTipBox = document.querySelector('.tipBox');
+        
+        // Si ya existe un tipBox, eliminarlo
+        if (existingTipBox) {
+            existingTipBox.remove();
+        }
+
+        // Si el tipBox eliminado pertenece al mismo ícono, salir de la función
+        if (event.target === lastClickedIcon) {
+            lastClickedIcon = null;  // Resetear la variable
+            return;
+        }
+
+        // Crear el contenedor del tip
+        const tipDiv = document.createElement('div');
+        tipDiv.textContent = tipText;
+        tipDiv.classList.add('tipBox', 'bg-black', 'text-white', 'p-4', 'text-md', 'font-thin', 'rounded-md', 'z-50', 'max-w-xs', 'mt-2');
+
+        // Insertar el tipBox justo después del ícono de información
+        event.target.parentNode.insertBefore(tipDiv, event.target.nextSibling);
+
+        // Agregar un evento para ocultar el tipBox al hacer clic fuera
+        document.addEventListener('click', function removeTip() {
+            tipDiv.remove();
+        }, { once: true });
+
+        // Actualizar la variable con el ícono clickeado
+        lastClickedIcon = event.target;
+    }
 
     // Función para generar las preguntas
     function generateQuestions() {
@@ -194,10 +228,18 @@
                 const questionDiv = document.createElement('div');
                 questionDiv.classList.add('mb-4');
 
-                const label = document.createElement('label');
+                const label = document.createElement('h3');
                 label.textContent = item.label;
-                label.classList.add('block','font-bold','text-2xl','font-serif','mb-6', 'mt-14');
+                label.classList.add('block', 'font-bold', 'text-3xl', 'font-serif', 'mb-4');
                 questionDiv.appendChild(label);
+
+                // Descripción de la pregunta
+                if (item.description) {
+                    const questionDescription = document.createElement('p');
+                    questionDescription.textContent = item.description;
+                    questionDescription.classList.add('mb-6', 'text-xl');
+                    questionDiv.appendChild(questionDescription);
+                }
 
                 if (item.type === "text") {
                     const input = document.createElement('input');
@@ -215,17 +257,35 @@
                         input.type = item.type;
                         input.name = item.name;
                         input.value = option.label;
+                        input.id = `${item.name}_${option.label}`; // Añadir un ID único para cada input
 
-                        if (option.checked) {  // Si la opción tiene el atributo checked, la marca por defecto
+                        if (option.checked) { 
                             input.setAttribute('checked', 'checked');
                         }
 
                         optionDiv.appendChild(input);
 
                         const optionLabel = document.createElement('label');
+                        optionLabel.setAttribute('for', input.id); // Asociar el label con el input mediante el ID
                         optionLabel.textContent = option.label;
-                        optionLabel.classList.add('ml-2');
+                        optionLabel.classList.add('ml-2', 'cursor-pointer');
                         optionDiv.appendChild(optionLabel);
+
+                        // Agregar el ícono de información si existe un tip
+                        if (option.tip) {
+                            const infoIcon = document.createElement('span');
+                            infoIcon.textContent = 'i';
+                            //infoIcon.classList.add('inline-block', 'w-5', 'h-5', 'bg-gray-800', 'text-white', 'rounded-full', 'text-center', 'text-sm', 'ml-2', 'cursor-pointer');
+                            infoIcon.classList.add('inline-block', 'text-black', 'text-md', 'ml-4', 'w-7', 'h-7', 'border-2', 'text-center', 'rounded-full', 'font-bold', 'cursor-pointer');
+
+                            infoIcon.setAttribute('data-tip', option.tip);
+                            optionDiv.appendChild(infoIcon);
+
+                            infoIcon.addEventListener('click', function(event) {
+                                event.stopPropagation();
+                                showTip(event.target.getAttribute('data-tip'), event);
+                            });
+                        }
 
                         questionDiv.appendChild(optionDiv);
                     });
@@ -238,8 +298,8 @@
                         optionElement.value = option.label;
                         optionElement.textContent = option.label;
                         select.appendChild(optionElement);
-                        select.classList.add('mb-1');
                     });
+                    select.classList.add('mb-1');
                     questionDiv.appendChild(select);
                 }
 
@@ -249,6 +309,7 @@
             form.appendChild(categoryDiv);
         });
     }
+
 
 
 
