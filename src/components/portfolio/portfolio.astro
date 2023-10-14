@@ -1,0 +1,14 @@
+---
+import PortFolioItem from "./PortFolioItem.astro"
+---
+
+<section id="portfolio" data-theme="orange" class="py-12 px-10 bg-orange-200">
+    <div class="container mx-auto text-center">
+      <h2 class="text-5xl font-bold font-serif mb-14">Algunos de nuestros últimos trabajos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <PortFolioItem imageUrl="img/ultimos-trabajos/liralashes.png" title="Lira Lashes" subtitle="Extensiones de Pestañas en Gandía" type="Web de Servicios" link="liralashes.com"/>
+        <PortFolioItem imageUrl="img/ultimos-trabajos/solycoco.png" title="Soly Cocó" subtitle="Portal de información de playas" type="Blog de noticias" link="solycoco.com"/>
+        <PortFolioItem imageUrl="img/ultimos-trabajos/gestionisabelhita.png" title="Gestión Isabel Hita" subtitle="Gestión de empresas y fincas en Xeraco" type="Landing Page" link="gestionisabelhita.com"/>
+      </div>
+    </div>
+  </section>

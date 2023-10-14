@@ -1,15 +1,22 @@
 ---
+
 import Layout from '../layouts/Layout.astro';
-import LayoutHeader from '../layouts/LayoutHeader.astro';
-import LayoutFooter from '../layouts/LayoutFooter.astro';
+import StickyHeaderBar from "../components/generic/StickyHeaderBar.astro";
+import PopUpBudget from "../components/generic/PopUpBudget.astro";
 
-import ServiceCard from '../components/ServiceCard/ServiceCard.astro';
-import PortFolioItem from '../components/PortFolioItem/PortFolioItem.astro';
-import Testimonial from '../components/Testimonial/Testimonial.astro';
+import Intro from '../components/intro/intro.astro';
+import BigTextImage from "../components/generic/BigTextImage.astro";
+import FullTextButton from "../components/generic/FullTextButton.astro";
 
+import Beneficios from '../components/beneficios/beneficios.astro';
+import SobreNosotros from '../components/sobre-nosotros/sobre-nosotros.astro';
+import Servicios from '../components/servicios/servicios.astro';
+import Portfolio from '../components/portfolio/portfolio.astro';
+import Ejemplos from '../components/ejemplos/ejemplos.astro';
+import Testimonios from '../components/testimonios/testimonios.astro';
+import Contacto from '../components/contacto/contacto.astro'; 
 
-
-
+import Footer from "../components/footer/footer.astro";
 
 ---
 <script>
@@ -151,346 +158,37 @@ const applyStylesForStickyBudget = (theme) => {
       checkStickyBudget();
   });
   
-  </script>
+</script>
   
 
 <Layout title="Inicio">
 
-  <LayoutHeader />
-  <section id="tener-web" data-theme="black" class="bg-black text-gray-200 px-14 py-12 text-center">
-    <div class="container mx-auto">
-      <h1 class="text-5xl font-bold font-serif mb-20">La importancia de tener una buena web</h1>
-      <ul class="grid grid-cols-1 gap-x-8 text-green-300 mb-8">
-        <li class=" list-none rounded-md bg-green-950/50 text-center font-sans ring-1 ring-green-300 py-7 px-8 mb-8">
-          <div class="text-7xl font-bold font-sans mb-5">97<span class="text-xl"> %</span></div>
-          <span class="text-white text-lg w-full block font-thin">Buscan negocios locales antes de salir a comprar</span>
-          <a href="https://www.google.es" class=" text-xs font-thin">google.es</a>
-        </li>
-        <li class=" list-none rounded-md bg-green-950/50 text-center font-sans ring-1 ring-green-300 py-7 px-8 mb-8">
-          <div class="text-7xl font-bold font-sans mb-5">84<span class="text-xl"> %</span></div>
-          <span class="text-white text-lg w-full block font-thin">Consiederan mas creible y fiable un negocio con web</span>
-          <a href="https://www.verisign.es" class=" text-xs font-thin">verisign.es</a>
-          </li>
-        <li class=" list-none rounded-md bg-green-950/50 text-center font-sans ring-1 ring-green-300 py-7 px-8 mb-8">
-          <div class="text-7xl font-bold font-sans mb-5">29<span class="text-xl"> %</span></div>
-          <span class="text-white text-lg w-full block font-thin">No harían negocios con empresas sin web</span>
-          <a href="https://www.clutch.es" class=" text-xs font-thin">clutch.es</a>
-        </li>
-        <li class=" list-none rounded-md bg-green-950/50 text-center font-sans ring-1 ring-green-300 py-7 px-8 mb-8">
-          <div class="text-7xl font-bold font-sans mb-5">3<span class="text-xl"> X</span></div>
-          <span class="text-white text-lg w-full block font-thin">Clientes potenciales a partir de una web</span>
-          <a href="https://www.hubspot.es" class=" text-xs font-thin">hubspot.es</a>
-        </li>
-      </ul>
-      <p class="text-xl font-thin">Como puedes ver, tu presencia en línea es más crucial que nunca en el mundo digital de hoy</p>
-    </div>
-  </section>
+    <StickyHeaderBar />
+    <PopUpBudget />
 
-  <section id="sobre-nosotros" data-theme="green" class=" bg-teal-950 text-gray-200 px-14 py-12 text-left">
-    <div class="container mx-auto font-thin">
-      <h1 class="text-5xl font-bold font-serif mb-8">¿Por qué con WebSafor?</h1>
-      <p class="text-xl mb-6">En WebSafor, entendemos la importancia de tener un sitio web que no solo se vea bien, sino que sea capaz de generar clientes para el negocio.</p>
-      <p class="text-xl mb-6">Especializados en diseño web y gráfico, nos dedicamos a transformar tus ideas en realidades digitales impactantes.</p>
-    </div>
-  </section>
+    <Intro />
 
-  <section id="portfolio" data-theme="orange" class="py-12 px-10 bg-orange-200">
-    <div class="container mx-auto text-center">
-      <h2 class="text-5xl font-bold font-serif mb-14">Algunos de nuestros últimos trabajos</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <PortFolioItem imageUrl="img/ultimos-trabajos/liralashes.png" title="Lira Lashes" subtitle="Extensiones de Pestañas en Gandía" type="Web de Servicios" link="liralashes.com"/>
-        <PortFolioItem imageUrl="img/ultimos-trabajos/solycoco.png" title="Soly Cocó" subtitle="Portal de información de playas" type="Blog de noticias" link="solycoco.com"/>
-        <PortFolioItem imageUrl="img/ultimos-trabajos/gestionisabelhita.png" title="Gestión Isabel Hita" subtitle="Gestión de empresas y fincas en Xeraco" type="Landing Page" link="gestionisabelhita.com"/>
-      </div>
-    </div>
-  </section>
+    <!-- Full Text Block -->
+    <BigTextImage title='¿Cuánto cuesta una web?' text="Desde 890 €" side="right" bg="bg-orange-200" color="blue-950" image="../../img/componentes/pensando2.png"/>
 
-  <section id="servicios" data-theme="white" class="text-black body-font">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="text-center mb-20">
-        <h2 class="font-serif text-6xl font-bold mb-14">Descubre nuestros servicios</h2>
-      </div>
-      <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
-          <!-- Diseño Web -->
-          <div class="p-12 md:w-1/3 flex flex-col text-center items-center">
-            <div class="relative w-24 h-24">
-              <div class="relative w-20 h-20 inline-flex items-center justify-center rounded-full bg-orange-200 text-teal-950 mb-5 flex-shrink-0"></div>
-              <img src="../../img/servicios/webs.png" class="absolute z-10 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-            </div>
-            <div class="flex-grow">
-              <h2 class="font-sans text-2xl font-medium mb-3">Creación Web</h2>
-              <span class="font-sans text-xl font-thin">Diseño responsivo, e-commerce, blogs y más. Adaptamos tu sitio a las necesidades de tu negocio.</span>
-              <a href="#" id="webDesignBtn" class="block w-full p-6 mt-8 mb-2 text-center rounded-md text-white bg-teal-950 text-2xl font-sans font-thin">Obtén un presupuesto gratuito al instante</a>
-              <a href="#" id="webDesignList" class=" block mt-4 text-center text-teal-900 text-md font-sans font-thin">Consulta la lista de precios</a>
-              <div id="webDesignPrices" class="hidden w-full p-8 mt-8 mb-2 text-left bg-orange-200 rounded-md text-teal-900 text-md font-sans font-thin"></div>
-            </div>
-          </div>
-          <!-- Mantenimiento Web -->
-          <div class="p-12 md:w-1/3 flex flex-col text-center items-center">
-            <div class="relative w-24 h-24">
-              <div class="relative w-20 h-20 inline-flex items-center justify-center rounded-full bg-orange-200 text-teal-950 mb-5 flex-shrink-0"></div>
-              <img src="../../img/servicios/content.png" class="absolute z-10 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-            </div>
-            <div class="flex-grow">
-              <h2 class="font-sans text-2xl font-medium mb-3">Contenido Web</h2>
-              <span class="font-sans text-xl font-thin">Mantenimiento y actualizaciones para tu sitio web, garantizando su óptimo funcionamiento.</span>
-              <a href="#" id="webContentBtn" class="block w-full p-6 mt-8 mb-2 text-center rounded-md text-white bg-teal-950 text-2xl font-sans font-thin">Calcula el precio de tu contenido</a>
-              <a href="#" id="webContentList" class=" block mt-4 text-center text-teal-900 text-md font-sans font-thin">Consulta la lista de precios</a>
-              <div id="webContentPrices" class="hidden w-full p-8 mt-8 mb-2 text-left bg-orange-200 rounded-md text-teal-900 text-md font-sans font-thin"></div>
-            </div>
-          </div>
-          <!-- Diseño Gráfico -->
-          <div class="p-12 md:w-1/3 flex flex-col text-center items-center">
-            <div class="relative w-24 h-24">
-              <div class="relative w-20 h-20 inline-flex items-center justify-center rounded-full bg-orange-200 text-teal-950 mb-5 flex-shrink-0"></div>
-              <img src="../../img/servicios/graphic-design.png" class="absolute z-10 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-            </div>
-            <div class="flex-grow">
-              <h2 class="font-sans text-2xl font-medium mb-3">Diseño Gráfico</h2>
-              <span class="font-sans text-xl font-thin">Logos personalizados, tarjetas de visita, y más. Refleja la identidad de tu marca con un diseño único.</span>
-              <a href="#" id="graphicDesignBtn" class="block w-full p-6 mt-8 mb-2 text-center rounded-md text-white bg-teal-950 text-2xl font-sans font-thin">Consulta la lista</a>
-              <a href="#" id="graphicDesignList" class=" block mt-4 text-center text-teal-900 text-md font-sans font-thin">Consulta la lista de precios</a>
-              <div id="graphicDesignPrices" class="hidden w-full p-8 mt-8 mb-2 text-left bg-orange-200 rounded-md text-teal-900 text-md font-sans font-thin"></div>
-            </div>
-          </div>
-          
-        </div>
-    </div>
-  </section>
+    <!-- Full Text Block -->
+    <FullTextButton title='¿En cuanto tiempo?' subtitle="" text="Entre 2 y 4 semanas" button="Obten un Presupuesto Gratuito" side="left" color="white" bg="bg-teal-950" />
 
-  <script>
-    import {webPrice} from "../components/Generic/webPrice.js";
-    import {contentPrice} from "../components/Generic/contentPrice.js";
-    import {designPrice} from "../components/Generic/designPrice.js";
+    <Beneficios />
 
-    function generatePriceList(prices) {
-      let priceList = '<span class="text-lg font-medium block text-center mb-4">Listado de precios</span>';
+    <SobreNosotros />
 
-      prices.forEach(section => {
-          priceList += `<span class="text-md font-semibold block mt-4 mb-2">${section.title}</span><ul class="list-disc pl-5">`;
-          section.items.forEach(item => {
-              item.options.forEach(option => {
-                  if (option.price !== 0) { // Solo agregamos a la lista si el precio no es 0
-                      priceList += `<li class="mb-2">${option.label}: <strong>${option.price}€</strong></li>`;
-                  }
-              });
-          });
-          priceList += '</ul>';
-      });
+    <Portfolio />
 
-      return priceList;
-    }
+    <Servicios />
 
-
-
-
-    function toggleVisibility(element) {
-        if(element.classList.contains('hidden')) {
-            element.classList.remove('hidden');
-        } else {
-            element.classList.add('hidden');
-        }
-    }
-
-    document.getElementById('webDesignList').addEventListener('click', function(e){
-        e.preventDefault();
-        const pricesContainer = document.getElementById('webDesignPrices');
-        if(pricesContainer.innerHTML.trim() === '') {
-            pricesContainer.innerHTML = generatePriceList(webPrice);
-        }
-        toggleVisibility(pricesContainer);
-    });
-
-    document.getElementById('webContentList').addEventListener('click', function(e){
-        e.preventDefault();
-        const pricesContainer = document.getElementById('webContentPrices');
-        if(pricesContainer.innerHTML.trim() === '') {
-            pricesContainer.innerHTML = generatePriceList(contentPrice);
-        }
-        toggleVisibility(pricesContainer);
-    });
-
-    document.getElementById('graphicDesignList').addEventListener('click', function(e){
-        e.preventDefault();
-        const pricesContainer = document.getElementById('graphicDesignPrices');
-        if(pricesContainer.innerHTML.trim() === '') {
-            pricesContainer.innerHTML = generatePriceList(designPrice);
-        }
-        toggleVisibility(pricesContainer);
-    });
-
-  </script>
+    <Ejemplos />
   
+    <Testimonios />
 
-  <section id="ejemplos" data-theme="grey" class="bg-gray-200 text-black px-14 py-12 text-right bg-grid-pattern bg-20px">
-    <div class="container mx-auto">
-        <h2 class="text-6xl font-bold font-serif mb-20">Ejemplos de distintos tipos de webs</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+    <Contacto />
 
-            <!-- Landing Page -->
-            <div class="bg-white pb-6 shadow-md hover:shadow-lg">
-                <img src="../../img/webs/landing-page.png" />
-                <h3 class="text-black text-xl font-bold mt-2 p-4">Landing Page - 650€</h3>
-                <p class="text-black px-4 text-sm mb-4">Página única diseñada para una campaña de marketing específica, con el objetivo de convertir visitantes en clientes o suscriptores.</p>
-                <ul class="list-disc list-inside px-4 text-left text-sm">
-                    <li>Diseño responsivo</li>
-                    <li>Formulario de contacto avanzado</li>
-                    <li>Integración con redes sociales</li>
-                    <li>Optimización SEO avanzada</li>
-                    <li>Integración con Google Analytics</li>
-                    <li>Chat en vivo</li>
-                </ul>
-            </div>
+    <Footer />
 
-            <!-- Portafolio -->
-            <div class="bg-white pb-6 shadow-md hover:shadow-lg">
-                <img src="../../img/webs/portfolio.png" />
-                <h3 class="text-black text-xl font-bold mt-2 p-4">Portafolio - 850€</h3>
-                <p class="text-black px-4 text-sm mb-4">Utilizado por creativos y profesionales para mostrar su trabajo y habilidades a posibles clientes o empleadores.</p>
-                <ul class="list-disc list-inside px-4 text-left text-sm">
-                    <li>Diseño responsivo</li>
-                    <li>Galería de trabajos interactiva</li>
-                    <li>Formulario de contacto avanzado</li>
-                    <li>Blog integrado</li>
-                    <li>Optimización SEO avanzada</li>
-                    <li>Integración con redes sociales</li>
-                </ul>
-            </div>
-
-            <!-- E-commerce -->
-            <div class="bg-white pb-6 shadow-md hover:shadow-lg">
-                <img src="../../img/webs/ecommerce.png" />
-                <h3 class="text-black text-xl font-bold mt-2 p-4">E-commerce - 2000€</h3>
-                <p class="text-black px-4 text-sm mb-4">Sitio web diseñado para la venta de productos o servicios en línea, incluyendo carritos de compra y métodos de pago.</p>
-                <ul class="list-disc list-inside px-4 text-left text-sm">
-                    <li>Diseño responsivo</li>
-                    <li>Carrito de compras avanzado</li>
-                    <li>Métodos de pago integrados</li>
-                    <li>Optimización SEO avanzada</li>
-                    <li>Integración con redes sociales</li>
-                    <li>20 productos cargados</li>
-                    <li>Integración con sistemas de valoraciones</li>
-                    <li>Chat en vivo para soporte</li>
-                </ul>
-            </div>
-
-            <!-- Blog -->
-            <div class="bg-white pb-6 shadow-md hover:shadow-lg">
-                <img src="../../img/webs/blog.png" />
-                <h3 class="text-black text-xl font-bold mt-2 p-4">Blog - 750€</h3>
-                <p class="text-black px-4 text-sm mb-4">Un sitio web personal o corporativo que contiene entradas de contenido, artículos o publicaciones, generalmente en orden cronológico.</p>
-                <ul class="list-disc list-inside px-4 text-left text-sm">
-                    <li>Diseño responsivo</li>
-                    <li>Integración con redes sociales</li>
-                    <li>Optimización SEO avanzada</li>
-                    <li>10 artículos cargados</li>
-                    <li>Integración con Google Analytics</li>
-                    <li>Comentarios y moderación</li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-
-  <section id="testimonios" data-theme="orange" class="bg-orange-200 text-white px-14 py-12 text-left">
-    <div class="container mx-auto">
-        <h2 class="text-6xl font-bold font-serif mb-20">Lo que dicen nuestros clientes</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-teal-900 mb-8">
-            
-            <!-- Testimonio 1 -->
-            <div class="rounded-md bg-white p-6 shadow-md hover:shadow-lg">
-                <p class="text-lg font-thin mb-6">"Desde que tengo la web, no han parado de contactarme para contratar mis servicios."</p>
-                <div class="flex items-center">
-                    <img src="../../img/testimonios/isabel-hita.png" alt="Cliente 1" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="text-xl font-bold">Isabel Hital</h4>
-                        <span class="text-sm font-thin">Gestión Isabel Hita</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonio 2 -->
-            <div class="rounded-md bg-white p-6 shadow-md hover:shadow-lg">
-                <p class="text-lg font-thin mb-6">"La cantidad de clientas que he conseguido a través de la web es incontable. ¡Muchas gracias WebSafor!"</p>
-                <div class="flex items-center">
-                    <img src="../../img/testimonios/daniela-lira.png" alt="Cliente 2" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="text-xl font-bold">Daniela Lira</h4>
-                        <span class="text-sm font-thin">Lira Lashes</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonio 3 -->
-            <div class="rounded-md bg-white p-6 shadow-md hover:shadow-lg">
-                <p class="text-lg font-thin mb-6">"Con la web que me han hecho, he vendido mas complementos que nunca!"</p>
-                <div class="flex items-center">
-                    <img src="../../img/testimonios/ana-cerda.png" alt="Cliente 3" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="text-xl font-bold">Ana Cerdá</h4>
-                        <span class="text-sm font-thin">Ana Cerdá Artesanía</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section id="contacto" data-theme="white" class="bg-white text-black px-14 py-12 text-center">
-  <div class="container mx-auto">
-      <h2 class="text-5xl font-bold font-serif mb-10">¡Hablemos!</h2>
-      <p class="text-2xl font-medium mb-8">Estamos aquí para ayudarte a llevar tu negocio al siguiente nivel.</p>
-      <p class="text-xl font-thin mb-10">Llámanos o envíanos un WhatsApp al <span class="font-semibold">686 18 43 28</span> o escríbenos a <a href="mailto:info@websafor.com" class="underline font-semibold">info@websafor.com</a>.</p>
-
-      <div class="mt-6">
-        <button id="emailButton" class="w-full text-center py-4 bg-gray-3 mb-4 rounded-lg mr-2">Llamar</button>
-        <button id="whatsappButton" class="w-full text-center py-4 bg-green-600 text-white rounded-lg">Enviar WhatsApp</button>
-    </div>
-      
-      <div class="border-t border-gray-300 mt-10 pt-10">
-          <p class="text-xl font-medium mb-6">O si lo prefieres, déjanos tus datos y te contactaremos</p>
-          <form action="/ruta-del-procesador-del-formulario" method="post" class="w-full max-w-lg mx-auto">
-              <div class="flex flex-wrap mb-6">
-                  <div class="relative w-full px-3">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
-                          Nombre
-                      </label>
-                      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="name" type="text" name="name" required>
-                  </div>
-              </div>
-              <div class="flex flex-wrap mb-6">
-                  <div class="relative w-full px-3">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
-                          Email
-                      </label>
-                      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="email" type="email" name="email" required>
-                  </div>
-              </div>
-              <div class="flex flex-wrap mb-6">
-                  <div class="relative w-full px-3">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="message">
-                          Mensaje
-                      </label>
-                      <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white h-32" id="message" name="message" required></textarea>
-                  </div>
-              </div>
-              <div class="flex flex-wrap">
-                  <div class="relative w-full px-3 text-right">
-                      <button type="submit" class="bg-teal-900 hover:bg-teal-700 text-white font-bold w-full text-center py-4 rounded-lg">
-                          Enviar
-                      </button>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
-</section>
-
-
-  <LayoutFooter />
 </Layout>
 
