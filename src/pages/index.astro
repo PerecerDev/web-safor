@@ -12,76 +12,147 @@ import Testimonial from '../components/Testimonial/Testimonial.astro';
 
 
 ---
-
 <script>
 
-document.addEventListener("DOMContentLoaded", function() {
-    const sections = document.querySelectorAll('section[data-theme]');
-    const sticky = document.querySelector('.fixed');
-    const logo = document.querySelector('.logo');
-    const plusButton = document.querySelector('#toggleButton');
-    const navMenu = document.querySelector('#navMenu');
+  document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll('section[data-theme]');
+      const sticky = document.querySelector('#sticky-header');
+      const stickyBudget = document.querySelector('#budgetSticky');
+      const logo = document.querySelector('.logo');
+      const plusButton = document.querySelector('#toggleButton');
+      const navMenu = document.querySelector('#navMenu');
+      const applyStylesForSticky = (theme) => {
+    logo.style.transition = 'fill 0.3s ease';
+    plusButton.style.transition = 'color 0.3s ease';
+    sticky.style.transition = 'background 0.3s ease, background-image 0.3s ease, border-bottom 0.3s ease';
 
-    const checkSection = () => {
-    sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const triggerPoint = window.innerHeight * 0.1;
-        if (rect.top <= triggerPoint && rect.bottom >= triggerPoint) {
-            const theme = section.getAttribute('data-theme');
+    switch (theme) {
+        case 'white':
+            logo.style.fill = 'black';
+            plusButton.style.color = 'black';
+            navMenu.style.color = 'black';
+            sticky.style.background = 'white';
+            sticky.style.borderBottom = '1px solid black';
+            break;
 
-            // Establece la transición antes de cambiar el estilo
-            logo.style.transition = 'fill 0.3s ease';
-            plusButton.style.transition = 'color 0.3s ease';
-            sticky.style.transition = 'background 0.3s ease, background-image 0.3s ease, border-bottom 0.3s ease';
+        case 'orange':
+            logo.style.fill = '#042f2e';
+            plusButton.style.color = '#042f2e';
+            navMenu.style.color = '#042f2e';
+            sticky.style.background = '#fed7aa';
+            sticky.style.borderBottom = '1px solid #042f2e';
+            break;
 
-            switch (theme) {
-                case 'white':
-                    logo.style.fill = 'black';
-                    plusButton.style.color = 'black';
-                    navMenu.style.color = 'black';
-                    sticky.style.background = 'white';
-                    sticky.style.borderBottom = '1px solid black'; 
-                    break;
-                case 'orange':
-                    logo.style.fill = '#042f2e';
-                    plusButton.style.color = '#042f2e';
-                    navMenu.style.color = '#042f2e';
-                    sticky.style.background = '#fed7aa';
-                    sticky.style.borderBottom = '1px solid #042f2e'; 
-                    break;
-                case 'green':
-                    logo.style.fill = '#fed7aa';
-                    plusButton.style.color = '#fed7aa';
-                    navMenu.style.color = '#fed7aa';
-                    sticky.style.background = '#042f2e';
-                    sticky.style.borderBottom = '1px solid #fed7aa'; 
-                    break;
-                case 'black':
-                    logo.style.fill = 'white';
-                    plusButton.style.color = 'white';
-                    navMenu.style.color = 'white';
-                    sticky.style.background = 'black';
-                    sticky.style.borderBottom = '1px solid white'; 
-                    break;
-                case 'grey':
-                    logo.style.fill = '#042f2e';
-                    plusButton.style.color = '#042f2e';
-                    navMenu.style.color = '#042f2e';
-                    sticky.style.background = '#e5e7eb';
-                    sticky.style.backgroundImage = 'linear-gradient(0deg, rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)';
-                    sticky.style.backgroundSize = '10px 10px';
-                    sticky.style.borderBottom = '1px solid #042f2e'; 
-            }
-        }
-    });
+        case 'green':
+            logo.style.fill = '#fed7aa';
+            plusButton.style.color = '#fed7aa';
+            navMenu.style.color = '#fed7aa';
+            sticky.style.background = '#042f2e';
+            sticky.style.borderBottom = '1px solid #fed7aa';
+            break;
+
+        case 'black':
+            logo.style.fill = 'white';
+            plusButton.style.color = 'white';
+            navMenu.style.color = 'white';
+            sticky.style.background = 'black';
+            sticky.style.borderBottom = '1px solid white';
+            break;
+
+        case 'grey':
+            logo.style.fill = '#042f2e';
+            plusButton.style.color = '#042f2e';
+            navMenu.style.color = '#042f2e';
+            sticky.style.background = '#e5e7eb';
+            sticky.style.backgroundImage = 'linear-gradient(0deg, rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)';
+            sticky.style.backgroundSize = '20px 20px';
+            sticky.style.borderBottom = '1px solid #042f2e';
+            break;
+    }
+};
+const applyStylesForStickyBudget = (theme) => {
+    logo.style.transition = 'fill 0.3s ease';
+    plusButton.style.transition = 'color 0.3s ease';
+    stickyBudget.style.transition = 'background 0.3s ease, border-bottom 0.3s ease';
+
+    switch (theme) {
+        case 'white':
+            stickyBudget.style.background = 'black';
+            stickyBudget.style.color = 'white';
+            break;
+
+        case 'orange':
+            stickyBudget.style.background = '#042f2e';
+            stickyBudget.style.color = '#fed7aa';
+            break;
+
+        case 'green':
+            stickyBudget.style.background = '#fed7aa';
+            stickyBudget.style.color = '#042f2e';
+            break;
+
+        case 'black':
+            stickyBudget.style.background = 'white';
+            stickyBudget.style.color = 'black';
+            break;
+
+        case 'grey':
+            stickyBudget.style.background = '#042f2e';
+            stickyBudget.style.color = '#e5e7eb';
+            break;
+    }
 };
 
 
-    window.addEventListener('scroll', checkSection);
-    checkSection(); 
-});
 
-</script>
+  
+    const checkStickyHeader = () => {
+        const triggerPointTop = window.innerHeight * 0.1;
+        let lastMatchedSection = null;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= triggerPointTop && rect.bottom >= triggerPointTop) {
+                lastMatchedSection = section;
+            }
+        });
+
+        if (lastMatchedSection) {
+            const theme = lastMatchedSection.getAttribute('data-theme');
+            applyStylesForSticky(theme);
+        }
+    };
+
+    const checkStickyBudget = () => {
+        const triggerPointBottom = window.innerHeight * 0.9;
+        let lastMatchedSection = null;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= triggerPointBottom && rect.bottom >= triggerPointBottom) {
+                lastMatchedSection = section;
+            }
+        });
+
+        if (lastMatchedSection) {
+            const theme = lastMatchedSection.getAttribute('data-theme');
+            applyStylesForStickyBudget(theme);
+        }
+    };
+
+  
+      window.addEventListener('scroll', () => {
+          checkStickyHeader();
+          checkStickyBudget();
+      });
+  
+      // Comprobar estilos iniciales
+      checkStickyHeader();
+      checkStickyBudget();
+  });
+  
+  </script>
+  
 
 <Layout title="Inicio">
 
@@ -149,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="flex-grow">
               <h2 class="font-sans text-2xl font-medium mb-3">Creación Web</h2>
               <span class="font-sans text-xl font-thin">Diseño responsivo, e-commerce, blogs y más. Adaptamos tu sitio a las necesidades de tu negocio.</span>
-              <a href="#" id="webDesignBtn" class="block w-full p-6 mt-8 mb-2 text-center rounded-md text-white bg-teal-900 text-2xl font-sans font-thin">Obtén un presupuesto gratuito al instante</a>
+              <a href="#" id="webDesignBtn" class="block w-full p-6 mt-8 mb-2 text-center rounded-md text-white bg-teal-950 text-2xl font-sans font-thin">Obtén un presupuesto gratuito al instante</a>
               <a href="#" id="webDesignList" class=" block mt-4 text-center text-teal-900 text-md font-sans font-thin">Consulta la lista de precios</a>
               <div id="webDesignPrices" class="hidden w-full p-8 mt-8 mb-2 text-left bg-orange-200 rounded-md text-teal-900 text-md font-sans font-thin"></div>
             </div>
@@ -163,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="flex-grow">
               <h2 class="font-sans text-2xl font-medium mb-3">Contenido Web</h2>
               <span class="font-sans text-xl font-thin">Mantenimiento y actualizaciones para tu sitio web, garantizando su óptimo funcionamiento.</span>
-              <a href="#" id="webContentBtn" class="block w-full p-6 mt-8 mb-2 text-center rounded-md text-white bg-teal-900 text-2xl font-sans font-thin">Calcula el precio de tu contenido</a>
+              <a href="#" id="webContentBtn" class="block w-full p-6 mt-8 mb-2 text-center rounded-md text-white bg-teal-950 text-2xl font-sans font-thin">Calcula el precio de tu contenido</a>
               <a href="#" id="webContentList" class=" block mt-4 text-center text-teal-900 text-md font-sans font-thin">Consulta la lista de precios</a>
               <div id="webContentPrices" class="hidden w-full p-8 mt-8 mb-2 text-left bg-orange-200 rounded-md text-teal-900 text-md font-sans font-thin"></div>
             </div>
@@ -177,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="flex-grow">
               <h2 class="font-sans text-2xl font-medium mb-3">Diseño Gráfico</h2>
               <span class="font-sans text-xl font-thin">Logos personalizados, tarjetas de visita, y más. Refleja la identidad de tu marca con un diseño único.</span>
-              <a href="#" id="graphicDesignBtn" class="block w-full p-6 mt-8 mb-2 text-center rounded-md text-white bg-teal-900 text-2xl font-sans font-thin">Consulta la lista</a>
+              <a href="#" id="graphicDesignBtn" class="block w-full p-6 mt-8 mb-2 text-center rounded-md text-white bg-teal-950 text-2xl font-sans font-thin">Consulta la lista</a>
               <a href="#" id="graphicDesignList" class=" block mt-4 text-center text-teal-900 text-md font-sans font-thin">Consulta la lista de precios</a>
               <div id="graphicDesignPrices" class="hidden w-full p-8 mt-8 mb-2 text-left bg-orange-200 rounded-md text-teal-900 text-md font-sans font-thin"></div>
             </div>
@@ -251,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </script>
   
 
-  <section id="ejemplos" data-theme="grey" class="bg-gray-200 text-black px-14 py-12 text-right bg-grid-pattern bg-10px">
+  <section id="ejemplos" data-theme="grey" class="bg-gray-200 text-black px-14 py-12 text-right bg-grid-pattern bg-20px">
     <div class="container mx-auto">
         <h2 class="text-6xl font-bold font-serif mb-20">Ejemplos de distintos tipos de webs</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
@@ -327,10 +398,10 @@ document.addEventListener("DOMContentLoaded", function() {
   <section id="testimonios" data-theme="orange" class="bg-orange-200 text-white px-14 py-12 text-left">
     <div class="container mx-auto">
         <h2 class="text-6xl font-bold font-serif mb-20">Lo que dicen nuestros clientes</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-gray-200 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-teal-900 mb-8">
             
             <!-- Testimonio 1 -->
-            <div class="rounded-md bg-teal-900 p-6 shadow-md hover:shadow-lg">
+            <div class="rounded-md bg-white p-6 shadow-md hover:shadow-lg">
                 <p class="text-lg font-thin mb-6">"Desde que tengo la web, no han parado de contactarme para contratar mis servicios."</p>
                 <div class="flex items-center">
                     <img src="../../img/testimonios/isabel-hita.png" alt="Cliente 1" class="w-12 h-12 rounded-full mr-4">
@@ -342,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
 
             <!-- Testimonio 2 -->
-            <div class="rounded-md bg-teal-900 p-6 shadow-md hover:shadow-lg">
+            <div class="rounded-md bg-white p-6 shadow-md hover:shadow-lg">
                 <p class="text-lg font-thin mb-6">"La cantidad de clientas que he conseguido a través de la web es incontable. ¡Muchas gracias WebSafor!"</p>
                 <div class="flex items-center">
                     <img src="../../img/testimonios/daniela-lira.png" alt="Cliente 2" class="w-12 h-12 rounded-full mr-4">
@@ -354,7 +425,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
 
             <!-- Testimonio 3 -->
-            <div class="rounded-md bg-teal-900 p-6 shadow-md hover:shadow-lg">
+            <div class="rounded-md bg-white p-6 shadow-md hover:shadow-lg">
                 <p class="text-lg font-thin mb-6">"Con la web que me han hecho, he vendido mas complementos que nunca!"</p>
                 <div class="flex items-center">
                     <img src="../../img/testimonios/ana-cerda.png" alt="Cliente 3" class="w-12 h-12 rounded-full mr-4">
@@ -374,16 +445,21 @@ document.addEventListener("DOMContentLoaded", function() {
       <h2 class="text-5xl font-bold font-serif mb-10">¡Hablemos!</h2>
       <p class="text-2xl font-medium mb-8">Estamos aquí para ayudarte a llevar tu negocio al siguiente nivel.</p>
       <p class="text-xl font-thin mb-10">Llámanos o envíanos un WhatsApp al <span class="font-semibold">686 18 43 28</span> o escríbenos a <a href="mailto:info@websafor.com" class="underline font-semibold">info@websafor.com</a>.</p>
+
+      <div class="mt-6">
+        <button id="emailButton" class="w-full text-center py-4 bg-gray-3 mb-4 rounded-lg mr-2">Llamar</button>
+        <button id="whatsappButton" class="w-full text-center py-4 bg-green-600 text-white rounded-lg">Enviar WhatsApp</button>
+    </div>
       
       <div class="border-t border-gray-300 mt-10 pt-10">
-          <p class="text-xl font-medium mb-6">O si lo prefieres, déjanos tus datos y te contactaremos:</p>
+          <p class="text-xl font-medium mb-6">O si lo prefieres, déjanos tus datos y te contactaremos</p>
           <form action="/ruta-del-procesador-del-formulario" method="post" class="w-full max-w-lg mx-auto">
               <div class="flex flex-wrap mb-6">
-                  <div class="relative w-full px-3 mb-6 md:mb-0">
+                  <div class="relative w-full px-3">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
                           Nombre
                       </label>
-                      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="name" type="text" name="name" required>
+                      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="name" type="text" name="name" required>
                   </div>
               </div>
               <div class="flex flex-wrap mb-6">
@@ -391,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function() {
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
                           Email
                       </label>
-                      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="email" type="email" name="email" required>
+                      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="email" type="email" name="email" required>
                   </div>
               </div>
               <div class="flex flex-wrap mb-6">
@@ -399,12 +475,12 @@ document.addEventListener("DOMContentLoaded", function() {
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="message">
                           Mensaje
                       </label>
-                      <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white h-32" id="message" name="message" required></textarea>
+                      <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white h-32" id="message" name="message" required></textarea>
                   </div>
               </div>
               <div class="flex flex-wrap">
                   <div class="relative w-full px-3 text-right">
-                      <button type="submit" class="bg-teal-950 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
+                      <button type="submit" class="bg-teal-900 hover:bg-teal-700 text-white font-bold w-full text-center py-4 rounded-lg">
                           Enviar
                       </button>
                   </div>

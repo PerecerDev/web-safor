@@ -8,7 +8,7 @@ module.exports = {
 			},
 
 			backgroundSize: {
-			'10px': '10px 10px'
+			'20px': '20px 20px'
 			},
 			lineHeight:{
 				'4rem': '4rem',

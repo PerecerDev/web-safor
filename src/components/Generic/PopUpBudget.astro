@@ -1,15 +1,11 @@
----
-    
-
----
 
 <section id="popUpBudget" class="hidden grid place-items-center fixed z-40 top-0 left-0 right-0 !mt-0 w-full h-screen bg-white overflow-y-auto">    
     <div id="closePopUp" class="absolute top-4 right-4 text-right rounded-xl text-lg text-teal-900 cursor-pointer hover:bg-gray-200 p-2 z-50">X</div>
     <div id="popUpcontent" class="text-center p-8">
         <!-- Pantalla de presentación -->
         <div id="introScreen">
-            <h3 class="text-3xl font-serif font-bold mb-4">Estas son algunas preguntas para poder darte un presupuesto detallado</h3>
-            <button id="startButton" class="mt-4 px-4 py-2 bg-teal-900 text-white rounded hover:bg-teal-800">Empezar</button>
+            <h3 class="text-3xl font-serif font-bold mb-8">Estas son algunas preguntas para poder darte un presupuesto detallado</h3>
+            <button id="startButton" class="mt-4 w-full text-cente py-4 bg-teal-900 text-white rounded-lg hover:bg-teal-800">Empezar</button>
         </div>
         
         <div id="questionScreens" class="hidden">
@@ -18,21 +14,44 @@
                 <!-- Aquí se insertarán las preguntas dinámicamente -->
             </form>
             <div class=" space-x-4">
-                <button type="button" id="prevCategory" class="hidden px-4 py-2 border border-gray-300 rounded hover:bg-gray-100">← Anterior</button>
-                <button type="button" id="nextCategory" class="px-4 py-2 bg-teal-900 text-white rounded hover:bg-teal-800">Siguiente →</button>
+                <button type="button" id="prevCategory" class="hidden px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">← Anterior</button>
+                <button type="button" id="nextCategory" class="px-4 py-2 bg-teal-900 text-white rounded-lg hover:bg-teal-800">Siguiente →</button>
             </div>
         </div>
         
         <!-- Pantalla final -->
         <div id="finalScreen" class="hidden">
-            <h3 class="text-3xl font-serif font-bold mb-4">¡Gracias por responder las preguntas!</h3>
+            <h3 id="priceTitle" class="text-2xl font-serif font-bold mb-4">Este es el presupuesto de tu web</h3>
             <div id="summary" class="mb-4"></div> <!-- Contenedor para las respuestas -->
             <div id="finalPrice" class="text-2xl font-bold mb-4"></div> <!-- Contenedor para el precio -->
-            <button id="restartButton" class="mt-4 px-4 py-2 bg-teal-900 text-white rounded hover:bg-teal-800">Volver a empezar</button>
+
+            <!-- Botones para enviar -->
+            <div class="mt-6">
+                <button id="emailButton" class="w-full text-center py-4 bg-teal-900 text-white mb-4 rounded-lg mr-2">Enviar por email</button>
+                <button id="whatsappButton" class="w-full text-center py-4 bg-green-600 text-white rounded-lg">Enviar por WhatsApp</button>
+            </div>
+
+            <!-- Formulario para email -->
+            <div id="emailForm" class="mt-4 hidden mb-8">
+                <label for="nameMail" class="block mb-2">Nombre</label>
+                <input id="nameMail" type="text" class="bg-gray-200 p-4 w-full rounded-lg mb-2">
+                <label for="emailInput" class="block mb-2">Dirección de Email</label>
+                <input id="emailInput" type="email" class="bg-gray-200 p-4 w-full rounded-lg mb-4">
+                <button id="sendEmailButton" class="w-full text-center py-4 mt-8 bg-teal-900 text-white rounded-lg">Enviar Presupuesto</button>
+            </div>
+
+            <!-- Formulario para WhatsApp -->
+            <div id="whatsappForm" class="mt-4 hidden">
+                <label for="nameWhatsapp" class="block mb-2">Nombre</label>
+                <input id="nameWhatsapp" type="text" class="bg-gray-200 p-4 w-full rounded-lg mb-2">
+                <label for="whatsappInput" class="block mb-2">Número de Whatsapp</label>
+                <input id="whatsappInput" type="tel" class="bg-gray-200 p-4 w-full rounded-lg mb-4">
+                <button id="sendWhatsappButton" class="w-full text-center py-4 mt-8 bg-teal-900 text-white rounded">Enviar Presupuesto</button>
+            </div>
         </div>
+
     </div>
 </section>
-
 
 <script>
 
@@ -60,8 +79,12 @@
         document.getElementById('popUpBudget').classList.remove('hidden');
     }
 
-
     document.querySelector('#openPopUpBudget').addEventListener('click', function(e){
+        e.preventDefault();
+        setQuestions('webDesign');
+    });
+
+    document.querySelector('#budgetSticky').addEventListener('click', function(e){
         e.preventDefault();
         setQuestions('webDesign');
     });
@@ -86,7 +109,6 @@
     });
 
     let answers = {};
-
     let currentCategory = 1;
 
     document.getElementById('startButton').addEventListener('click', function() {
@@ -95,31 +117,33 @@
         document.getElementById('questionIndicator').textContent = `${currentCategory} / ${totalCategories}`;
 
     });
-    document.getElementById('nextCategory').addEventListener('click', function() {
-    // Almacenar las respuestas actuales
-    let currentInputs = document.querySelectorAll(`.category[data-category="${currentCategory}"] input, .category[data-category="${currentCategory}"] select`);
-    currentInputs.forEach(input => {
-        if (input.type === "text" || input.type === "select-one" || input.type === "radio") {
-            if (input.checked || input.type !== "radio") {  // Asegurarse de que el radio esté seleccionado
-                answers[input.name] = input.value;
-            }
-        } else if (input.type === "checkbox" && input.checked) {
-            if (!answers[input.name]) {
-                answers[input.name] = [];
-            }
-            answers[input.name].push(input.value);
-        }
-    });
 
+    document.getElementById('nextCategory').addEventListener('click', function() {
+        // Almacenar las respuestas actuales
+        let currentInputs = document.querySelectorAll(`.category[data-category="${currentCategory}"] input, .category[data-category="${currentCategory}"] select`);
+        currentInputs.forEach(input => {
+            if (input.type === "text" || input.type === "select-one" || input.type === "radio") {
+                if (input.checked || input.type !== "radio") {  // Asegurarse de que el radio esté seleccionado
+                    answers[input.name] = input.value;
+                }
+            } else if (input.type === "checkbox" && input.checked) {
+                if (!answers[input.name]) {
+                    answers[input.name] = [];
+                }
+                answers[input.name].push(input.value);
+            }
+        });
 
         if (currentCategory < totalCategories) {
             document.querySelector(`.category[data-category="${currentCategory}"]`).classList.add('hidden');
             currentCategory++;
             document.querySelector(`.category[data-category="${currentCategory}"]`).classList.remove('hidden');
             document.getElementById('questionIndicator').textContent = `${currentCategory} / ${totalCategories}`;
+            
             if (currentCategory > 1) {
                 document.getElementById('prevCategory').classList.remove('hidden');
             }
+
         }  else {
             document.getElementById('questionScreens').classList.add('hidden');
             document.getElementById('finalScreen').classList.remove('hidden');
@@ -148,12 +172,56 @@
             // Calcular el precio en función de las respuestas y mostrarlo
             let price = calculatePrice(answers);
             document.getElementById('finalPrice').textContent = `Precio estimado: ${price}€`;
+            document.getElementById('finalPrice').classList.add('block','mt-8');
             
             document.getElementById('finalScreen').classList.remove('hidden');
+
+            // Eventos para los botones de enviar por email y WhatsApp
+            document.getElementById('emailButton').addEventListener('click', function() {
+                // Ocultar resumen y precio
+                document.getElementById('summary').classList.add('hidden');
+                document.getElementById('finalPrice').classList.add('hidden');
+                document.getElementById('emailButton').classList.add('hidden');
+                document.getElementById('whatsappButton').classList.add('hidden');
+
+                document.querySelector('#priceTitle').innerHTML = "Añade tu direcicón de email para enviarte el Presupuesto";
+
+                // Mostrar el formulario de email y ocultar el de WhatsApp
+                document.getElementById('emailForm').classList.remove('hidden');
+                document.getElementById('whatsappForm').classList.add('hidden');
+            });
+
+            document.getElementById('whatsappButton').addEventListener('click', function() {
+                // Ocultar resumen y precio
+                document.getElementById('summary').classList.add('hidden');
+                document.getElementById('finalPrice').classList.add('hidden');
+                document.getElementById('emailButton').classList.add('hidden');
+                document.getElementById('whatsappButton').classList.add('hidden');
+
+                document.querySelector('#priceTitle').innerHTML = "Añade tu número de Whatsapp para enviarte el Presupuesto";
+
+                // Mostrar el formulario de WhatsApp y ocultar el de email
+                document.getElementById('whatsappForm').classList.remove('hidden');
+                document.getElementById('emailForm').classList.add('hidden');
+            });
+
+            // Funcionalidad de envío por email (Ejemplo, requiere backend para enviar realmente el email)
+            document.getElementById('sendEmailButton').addEventListener('click', function() {
+                const email = document.getElementById('emailInput').value;
+                console.log(`Enviar presupuesto al email: ${email}`);
+                // Aquí agregar la lógica para enviar por email
+            });
+
+            // Funcionalidad de envío por WhatsApp
+            document.getElementById('sendWhatsappButton').addEventListener('click', function() {
+                const phoneNumber = document.getElementById('whatsappInput').value;
+                const message = `Hola, aquí está el presupuesto que calculé: ${totalPrice}. Detalles: ${selectionList}.`;
+                window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`);
+            });
+
+
         }
     });
-
-
 
     document.getElementById('prevCategory').addEventListener('click', function() {
         if (currentCategory > 1) {
@@ -167,7 +235,6 @@
         }
     });
 
-    
     function findQuestionLabelByKey(key) {
         for (let category of questions) {
             for (let item of category.items) {
@@ -203,19 +270,6 @@
         return price;
     }
 
-
-
-    document.getElementById('restartButton').addEventListener('click', function() {
-        // Reiniciar el formulario y volver a la pantalla de inicio
-        document.getElementById('finalScreen').classList.add('hidden');
-        document.getElementById('introScreen').classList.remove('hidden');
-        currentCategory = 1;
-        document.querySelector(`.category[data-category="${currentCategory}"]`).classList.remove('hidden');
-        for (let i = 2; i <= totalCategories; i++) {
-            document.querySelector(`.category[data-category="${i}"]`).classList.add('hidden');
-        }
-        answers = {};
-    });
     let lastClickedIcon = null;  // Variable para rastrear el último ícono clickeado
 
     function showTip(tipText, event) {
@@ -236,14 +290,30 @@
         // Crear el contenedor del tip
         const tipDiv = document.createElement('div');
         tipDiv.textContent = tipText;
-        tipDiv.classList.add('tipBox', 'bg-black', 'text-white', 'p-4', 'text-md', 'font-thin', 'rounded-md', 'z-50', 'max-w-xs', 'mt-2');
+        tipDiv.classList.add('tipBox', 'bg-gray-800', 'text-white', 'p-4', 'text-md', 'font-thin', 'rounded-md', 'z-50', 'max-w-xs', 'mt-2', 'overflow-hidden', 'transition-all', 'duration-500', 'ease-in-out', 'opacity-0', 'max-h-0');
 
         // Insertar el tipBox justo después del ícono de información
         event.target.parentNode.insertBefore(tipDiv, event.target.nextSibling);
 
+        // Captura la altura real del contenido una vez que se ha añadido al DOM.
+        let actualHeight = tipDiv.scrollHeight + "px";  // scrollHeight te da la altura real del contenido, incluso si está oculto
+
+        // Establecer un delay MUY CORTO para cambiar el max-height y opacity y desencadenar la animación
+        setTimeout(() => {
+            tipDiv.style.maxHeight = actualHeight;
+            tipDiv.style.opacity = "1";
+        }, 10);
+
+
         // Agregar un evento para ocultar el tipBox al hacer clic fuera
         document.addEventListener('click', function removeTip() {
-            tipDiv.remove();
+            tipDiv.style.maxHeight = "0";
+            tipDiv.style.opacity = "0";
+
+            // Establecer un delay para remover el tip del DOM después de que la animación haya terminado
+            setTimeout(() => {
+                tipDiv.remove();
+            }, 500); // Asegúrate de que este valor coincida con la duración de la transición (duration-500 en este caso)
         }, { once: true });
 
         // Actualizar la variable con el ícono clickeado
@@ -269,14 +339,14 @@
 
                 const label = document.createElement('h3');
                 label.textContent = item.label;
-                label.classList.add('block', 'font-bold', 'text-3xl', 'font-serif', 'mb-4');
+                label.classList.add('block', 'font-bold', 'text-2xl', 'font-serif', 'mb-4');
                 questionDiv.appendChild(label);
 
                 // Descripción de la pregunta
                 if (item.description) {
                     const questionDescription = document.createElement('p');
                     questionDescription.textContent = item.description;
-                    questionDescription.classList.add('mb-6', 'text-xl');
+                    questionDescription.classList.add('mb-8', 'text-lg');
                     questionDiv.appendChild(questionDescription);
                 }
 
@@ -290,7 +360,7 @@
                 } else if (item.type === "checkbox" || item.type === "radio") {
                     item.options.forEach(option => {
                         const optionDiv = document.createElement('div');
-                        optionDiv.classList.add('mb-1', 'text-left', 'py-2','px-6');
+                        optionDiv.classList.add('mb-1', 'text-left', 'py-2','px-4');
 
                         const input = document.createElement('input');
                         input.type = item.type;
@@ -315,7 +385,7 @@
                             const infoIcon = document.createElement('span');
                             infoIcon.textContent = 'i';
                             //infoIcon.classList.add('inline-block', 'w-5', 'h-5', 'bg-gray-800', 'text-white', 'rounded-full', 'text-center', 'text-sm', 'ml-2', 'cursor-pointer');
-                            infoIcon.classList.add('inline-block', 'text-black', 'text-md', 'ml-4', 'w-7', 'h-7', 'border-2', 'text-center', 'rounded-full', 'font-bold', 'cursor-pointer');
+                            infoIcon.classList.add('inline-block', 'text-sm', 'bg-gray-200', 'ml-4', 'w-5', 'h-5', 'text-center', 'rounded-full', 'font-normal', 'font-serif', 'cursor-pointer');
 
                             infoIcon.setAttribute('data-tip', option.tip);
                             optionDiv.appendChild(infoIcon);
@@ -349,10 +419,6 @@
         });
     }
 
-
-
-
-// Llamar a la función al cargar la página
-document.addEventListener('DOMContentLoaded', generateQuestions);
-
+    // Llamar a la función al cargar la página
+    document.addEventListener('DOMContentLoaded', generateQuestions);
 </script>
